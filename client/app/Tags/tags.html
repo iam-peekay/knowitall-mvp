@@ -1,0 +1,8 @@
+<a ui-sref="knowitall.tags"><img class="logo" src="assets/knowitall.jpg"></a>
+<ul class="nav nav-sidebar">
+    <li ng-repeat="tag in tagsController.tags" ng-class="{'active':isCurrentTag(tag)}">
+        <a ui-sref="knowitall.tags.questions({tag:tag.name})">
+            {{tag.name}}
+        </a>
+    </li>
+</ul>

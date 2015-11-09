@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  margin: 20px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #B8DBD9;
+  color: #2F4550;
+  font-size: 20px;
+}
+
+h1 {
+  font-size: 48px;
+  font-style: bold;
+}
+
+textarea {
+    width: 600px;
+    height: 100px;
+    font-size: 24px;
+    line-height: 28px
+}
+
+
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 20px;
+}
+
+.submit-button {
+  margin-left: 40%;
+  width: 20%;
+  padding: 0px;
+}
+
+/*styling for simple blinking cursor*/
+/*.blinking-cursor {
+  font-weight: 5000;
+  font-size: 24px;
+  color: #586F7C;
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+
+@keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-moz-keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-webkit-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-ms-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-o-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+*/

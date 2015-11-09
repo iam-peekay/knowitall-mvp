@@ -1,0 +1,23 @@
+<div id='/create.html'>
+<!-- Your code here -->
+<div class="container center" ng-controller="CreateController">
+
+<form name="addQuestion" ng-submit="addNewQuestion()" novalidate>
+    <div>
+        <label>Question</label>
+        <textarea class="blinking-cursor" ng-model="question.text" placeholder="Enter a question"></textarea>
+        <label>Answer</label>
+        <textarea class="blinking-cursor" ng-model="question.answer" placeholder="Enter the answer"></textarea>
+    </div>
+    <div>
+        <input class="blinking-cursor" ng-model="question.tag" placeholder="Enter a tag"></input>
+        <input class="blinking-cursor" ng-model="question.username" placeholder="Enter your username"></input>
+    </div>
+  <button class="btn btn-default" id="submit-button">Know It!</button>
+</form>
+
+</div>
+
+</div>
+
+

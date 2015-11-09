@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html  ng-app='knowitall' lang-"en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Know It All</title>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+  </head>
+  <body>
+    <h1>Knowit All</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar" ui-view="tags"></div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ui-view="questions"></div>
+        </div>
+    </div>
+
+    <!-- script tags -->
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="app/Tags/tags.js"></script>
+    <script src="app/Tags/Questions/questions.js"></script>
+    <script src="app/Tags/Questions/Create/question-create.js"></script>
+    <script src="app/services/questions-service.js"></script>
+    <script src="app/services/tags-service.js"></script>
+    <script src="app/app.js"></script>
+    </div>
+  </body>
+</html>
