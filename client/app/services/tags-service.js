@@ -17,6 +17,7 @@ angular.module('knowitall.services.tags', [])
       url: '/api/tags'
     })
     .then(function (result) {
+      console.log(result)
       return result.data;
     });
   };

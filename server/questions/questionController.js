@@ -1,5 +1,5 @@
 var Question = require('./questionModel.js');
-var User = require('../users/userModel.js');
+var Tag = require('../tags/tagModel.js');
 var Q = require('q');
 var util = require('../config/utils.js');
 
@@ -23,20 +23,67 @@ module.exports = {
     var tag = req.body.tag;
 
     var createQuestion = Q.nbind(Question.create, Question);
-    // TODO: need to find tag to match before doing this
-    var newQuestion = {
-      text: text,
-      answer: answer,
-      _tag: tag
-    };
-    createQuestion(newQuestion)
-    .then(function (createdQuestion) {
-      if (createdQuestion) {
-        res.json(createdQuestion);
+    var findTag = Q.nbind(Tag.findOne, Tag);
+    var createTag = Q.nbind(Tag.create, Tag);
+
+    findTag({name: tag})
+    .then(function (foundTag) {
+      if (foundTag) {
+        foundTag.save(function (err) {
+          if (err) { console.error(err); }
+          var newQuestion = new Question({
+            text: text,
+            answer: answer,
+            _tag: foundTag.name
+          });
+          newQuestion.save(function (err) {
+            if (err) { console.error(err); }
+            res.json(newQuestion);
+          })
+        });
+      } else {
+        var newTag = new Tag({
+          name: tag
+        });
+
+        newTag.save(function (err) {
+          if (err) { console.error(err); }
+          var newQuestion = new Question({
+            text: text,
+            answer: answer,
+            _tag: newTag.name
+          });
+          res.json(newQuestion);
+        });
       }
-    })
-    .fail(function (error) {
-      next(error);
     });
+
+    // findTag({_tag: tag})
+    //   .then(function (foundTag) {
+    //     if (foundTag) {
+    //       return foundTag;
+    //     } else {
+    //       var newTag = {
+    //         name: tag
+    //       };
+    //       return createTag(newTag)
+    //     }
+    //   })
+    //   .then(function (tag) {
+    //     var newQuestion = {
+    //       text: text,
+    //       answer: answer,
+    //       _tag: tag.name
+    //     };
+    //     createQuestion(newQuestion)
+    //   })
+    //   .then(function (createdQuestion) {
+    //     if (createdQuestion) {
+    //       res.json(createdQuestion);
+    //     }
+    //   })
+    //   .fail(function (error) {
+    //     next(error);
+    //   });
   }
 };

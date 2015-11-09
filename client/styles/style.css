@@ -21,20 +21,19 @@ textarea {
 
 
 .center {
-    margin: auto;
-    width: 60%;
-    padding: 20px;
+    width: 40%;
 }
 
 .submit-button {
-  margin-left: 40%;
   width: 20%;
-  padding: 0px;
 }
 
 .logo {
     padding: 20px;
-    
+}
+
+.question {
+  margin-top: 70px;
 }
 
 /*styling for simple blinking cursor*/

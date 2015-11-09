@@ -27,7 +27,7 @@ angular.module('tags.questions', ['knowitall.services.tags', 'knowitall.services
 
 
   function addNewQuestion () {
-    console.log('adding new question')
+    console.log('adding new question');
     QuestionsService.addNewQuestion(questionsController.newQuestion);
     returnToQuestions();
   }
@@ -41,7 +41,7 @@ angular.module('tags.questions', ['knowitall.services.tags', 'knowitall.services
       text: '',
       answer: '',
       tag: $stateParams.tag
-    }
+    };
      returnToQuestions();
    }
 

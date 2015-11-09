@@ -1,24 +1,27 @@
-<div ng-repeat="question in questionsController.questions">
+<ui-view>
+<div ng-repeat="question in questionsController.questions | filter:{tag:questionsController.getCurrentTagName()}">
+  <div>
     <span> {{question.text}} </span>
     <span> {{question.answer}} </span>
+    <span> {{question._tag}} </span>
+  </div>
 </div>
 <hr/>
-<ui-view>
     <div ng-if="questionsController.getCurrentTag()">
         <form ng-submit="questionsController.addNewQuestion()" novalidate>
-            <div>
+            <div class="center">
                 <label>Question Text</label>
-                <input type="text" ng-model="questionsController.newQuestion.text" placeholder="Enter question">
+                <textarea type="text" ng-model="questionsController.newQuestion.text" placeholder="Enter question"></textarea>
             </div>
-            <div>
+            <div class="center">
                 <label>Answer</label>
-                <input type="text" ng-model="questionsController.newQuestion.answer" placeholder="Enter answer">
+                <textarea type="text" ng-model="questionsController.newQuestion.answer" placeholder="Enter answer"></textarea>
             </div>
-            <div >
+            <div class="center">
                 <label >Tag</label>
                 <input type="text" ng-model="questionsController.newQuestion.tag" placeholder="Enter tag">
             </div>
-            <button type="submit" class="btn btn-info btn-md">Create</button>
+            <button type="submit" class="btn btn-info btn-md .submit-button">Create</button>
         </form>
     </div>
 </ui-view>

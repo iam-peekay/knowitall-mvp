@@ -8,7 +8,8 @@ Schema = mongoose.Schema;
 var TagSchema = new Schema({
   name: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
 
   questions: [{
@@ -37,7 +38,7 @@ var Tag = mongoose.model('Tag', TagSchema);
 // });
 
 
-// Tag.remove({ name: 'test2' }, function (err, small) {
+// Tag.remove({ name: 'test4' }, function (err, small) {
 //   if (err) return console.log('error removing Tag document');
 //   console.log('Tag document removed!');
 // });
