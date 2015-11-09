@@ -7,7 +7,6 @@ module.exports = {
   fetchAllTags: function (request, response, next) {
     // Create a promise returning function
     var findAll = Q.nbind(Tag.find, Tag);
-
     findAll({})
       .then(function (tags) {
         response.json(tags);

@@ -23,10 +23,11 @@ var QuestionSchema = new Schema({
 
 });
 
-
+var Question = mongoose.model('Question', QuestionSchema);
 QuestionSchema.pre('save', function (next) {
 // ANYTHING?
   next();
 });
 
-module.exports = mongoose.model('Question', QuestionSchema);
+
+module.exports = Question; 

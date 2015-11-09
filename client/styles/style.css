@@ -32,6 +32,11 @@ textarea {
   padding: 0px;
 }
 
+.logo {
+    padding: 20px;
+    
+}
+
 /*styling for simple blinking cursor*/
 /*.blinking-cursor {
   font-weight: 5000;

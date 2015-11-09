@@ -4,7 +4,7 @@ angular.module('tags.questions.create', [])
 
   var createQuestionController = this;
 
-  function addNewQuestion {
+  function addNewQuestion() {
     QuestionsService.addNewQuestion(createQuestionController.newQuestion);
   };
 

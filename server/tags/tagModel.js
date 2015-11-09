@@ -24,4 +24,16 @@ TagSchema.pre('save', function (next) {
   next();
 });
 
-module.exports = mongoose.model('Tag', TagSchema);
+var Tag = mongoose.model('Tag', TagSchema);
+
+// Tag.create({ name: 'test' }, function (err, small) {
+//   if (err) return console.log('error creating Tag model');
+//   console.log('Tag model created!');
+// });
+
+// Tag.create({ name: 'test2' }, function (err, small) {
+//   if (err) return console.log('error creating Tag model');
+//   console.log('Tag model created!');
+// });
+
+module.exports = Tag;

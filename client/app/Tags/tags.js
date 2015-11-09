@@ -1,15 +1,15 @@
 angular.module('tags', ['knowitall.services.tags'])
 .config(function ($stateProvider) {
   $stateProvider
-    .state('knowitall.tags' {
+    .state('knowitall.tags', {
       url: '/',
       views: {
         'tags@': {
-          controller: 'TagsController',
+          controller: 'TagsController as tagsController',
           templateUrl: 'app/Tags/tags.html'
         },
         'questions@': {
-          controller: 'QuestionsController',
+          controller: 'QuestionsController as questionsController',
           templateUrl: 'app/Tags/Questions/questions.html'
         }
       }
@@ -17,7 +17,7 @@ angular.module('tags', ['knowitall.services.tags'])
 })
 .controller('TagsController', function TagsController(TagsService) {
   var tagsController = this;
-  TagsFactory.getTags()
+  TagsService.getAllTags()
     .then(function (result) {
       tagsController.tags = result;
     });
