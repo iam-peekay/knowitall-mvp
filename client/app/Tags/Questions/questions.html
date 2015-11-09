@@ -1,13 +1,14 @@
-<div ng-repeat="question in QuestionsController.questions | filter:{tag:questionsController.getCurrentTagName()}">
-    <span> {{question.text}}</span>
-    <span>{{question.answer}}</span>
+<div ng-repeat="question in questionsController.questions">
+    <span> {{question.text}} </span>
+    <span> {{question.answer}} </span>
 </div>
+<hr/>
 <ui-view>
     <div ng-if="questionsController.getCurrentTag()">
         <button type="button" class="btn btn-link"
                 ui-sref="knowitall.tags.questions.create">
             <span class="glyphicon glyphicon-plus"></span>
-            Create Questions
+            Create a question!
         </button>
     </div>
 </ui-view>

@@ -33,30 +33,7 @@ angular.module('knowitall.services.tags', [])
     return currentTag ? currentTag.name : '';
   };
 
-  // service.getTagByName = function(tagName) {
-  //   var deferred = $q.defer();
 
-  //   function findTag() {
-  //     // need to build out a service function to look through the database to find a tag that matches the tagname from database (i.e. need to build this out in the database too)  
-  //   }
-
-  //   if (tags) {
-  //     deferred.resolve(findTag());
-  //   } else {
-  //     service.getAllTags()
-  //       .then(function() {
-  //         deferred.resolve(findTag());
-  //       });
-  //   }
-
-  //   return deferred.promise;
-  // };
+  // need to build out a service function to look through the database to find a tag that matches the tagname from database (i.e. need to build this out in the database too)
 
 });
-
-// TAGS.js
-// TAGS.html
-// TAGS SERVICE.js
-// CREATE QUESTIONS.js
-// CREATE QUESTIONS.html
-// QUESTIONS SERVICE.js

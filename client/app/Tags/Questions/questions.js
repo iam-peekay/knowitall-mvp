@@ -4,8 +4,8 @@ angular.module('tags.questions', ['tags.questions.create', 'knowitall.services.t
     .state('knowitall.tags.questions', {
       url: 'tags/:tag',
       views: {
-        'tags@': {
-          templateUrl: 'app/tags/questions/questions.html',
+        'questions@': {
+          templateUrl: 'app/tags/Questions/questions.html',
           controller: 'QuestionsController as questionsController'
         }
       }

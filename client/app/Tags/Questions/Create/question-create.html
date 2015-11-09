@@ -1,23 +1,15 @@
-<div id='/create.html'>
-<!-- Your code here -->
-<div class="container center" ng-controller="CreateController">
-
-<form name="addQuestion" ng-submit="addNewQuestion()" novalidate>
-    <div>
-        <label>Question</label>
-        <textarea class="blinking-cursor" ng-model="question.text" placeholder="Enter a question"></textarea>
-        <label>Answer</label>
-        <textarea class="blinking-cursor" ng-model="question.answer" placeholder="Enter the answer"></textarea>
+<form class="create-form" role="form" ng-submit="createQuestionController.addNewQuestion(newQuestion)" novalidate>
+    <div class="form-group">
+        <label for="newQuestionText">Question Text</label>
+        <textarea type="text" class="form-control" id="newQuestionText" ng-model="createQuestionController.newQuestion.text" placeholder="Enter question">
     </div>
-    <div>
-        <input class="blinking-cursor" ng-model="question.tag" placeholder="Enter a tag"></input>
-        <input class="blinking-cursor" ng-model="question.username" placeholder="Enter your username"></input>
+    <div class="form-group">
+        <label for="newQuestionAnswer">Answer</label>
+        <textarea type="text" class="form-control" id="newQuestionAnswer" ng-model="createQuestionController.newQuestion.answer" placeholder="Enter answer">
     </div>
-  <button class="btn btn-default" id="submit-button">Know It!</button>
+    <div class="form-group">
+        <label for="newQuestionTag">Tag</label>
+        <input type="text" class="form-control" id="newQuestionTag" ng-model="createQuestionController.newQuestion.tag" placeholder="Enter tag">
+    </div>
+    <button type="submit" class="btn btn-info btn-lg">Create</button>
 </form>
-
-</div>
-
-</div>
-
-

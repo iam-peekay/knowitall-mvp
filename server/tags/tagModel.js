@@ -26,14 +26,20 @@ TagSchema.pre('save', function (next) {
 
 var Tag = mongoose.model('Tag', TagSchema);
 
-// Tag.create({ name: 'test' }, function (err, small) {
+// Tag.create({ name: 'test3' }, function (err, small) {
 //   if (err) return console.log('error creating Tag model');
 //   console.log('Tag model created!');
 // });
 
-// Tag.create({ name: 'test2' }, function (err, small) {
+// Tag.create({ name: 'test4' }, function (err, small) {
 //   if (err) return console.log('error creating Tag model');
 //   console.log('Tag model created!');
+// });
+
+
+// Tag.remove({ name: 'test2' }, function (err, small) {
+//   if (err) return console.log('error removing Tag document');
+//   console.log('Tag document removed!');
 // });
 
 module.exports = Tag;
