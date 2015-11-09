@@ -1,4 +1,4 @@
-angular.module('tags.questions', ['tags.questions.create', 'knowitall.services.tags', 'knowitall.services.questions'])
+angular.module('tags.questions', ['knowitall.services.tags', 'knowitall.services.questions'])
 .config(function ($stateProvider) {
   $stateProvider
     .state('knowitall.tags.questions', {
@@ -11,7 +11,7 @@ angular.module('tags.questions', ['tags.questions.create', 'knowitall.services.t
       }
     });
 })
-.controller('QuestionsController', function ($stateParams, TagsService, QuestionsService) {
+.controller('QuestionsController', function ($stateParams, $state, TagsService, QuestionsService) {
   var questionsController = this;
 
   TagsService.setCurrentTag($stateParams.tag);
@@ -25,4 +25,27 @@ angular.module('tags.questions', ['tags.questions.create', 'knowitall.services.t
 
   questionsController.getCurrentTagName = TagsService.getCurrentTagName;
 
+
+  function addNewQuestion () {
+    console.log('adding new question')
+    QuestionsService.addNewQuestion(questionsController.newQuestion);
+    returnToQuestions();
+  }
+
+  function returnToQuestions() {
+    $state.go('knowitall.tags.questions', {tag: $stateParams.tag});
+  }
+
+  function resetForm () {
+    questionsController.newQuestion = {
+      text: '',
+      answer: '',
+      tag: $stateParams.tag
+    }
+     returnToQuestions();
+   }
+
+  questionsController.addNewQuestion = addNewQuestion;
+
+  resetForm();
 });

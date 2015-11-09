@@ -23,7 +23,7 @@ module.exports = {
     var tag = req.body.tag;
 
     var createQuestion = Q.nbind(Question.create, Question);
-
+    // TODO: need to find tag to match before doing this
     var newQuestion = {
       text: text,
       answer: answer,

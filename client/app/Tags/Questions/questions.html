@@ -5,11 +5,21 @@
 <hr/>
 <ui-view>
     <div ng-if="questionsController.getCurrentTag()">
-        <button type="button" class="btn btn-link"
-                ui-sref="knowitall.tags.questions.create">
-            <span class="glyphicon glyphicon-plus"></span>
-            Create a question!
-        </button>
+        <form ng-submit="questionsController.addNewQuestion()" novalidate>
+            <div>
+                <label>Question Text</label>
+                <input type="text" ng-model="questionsController.newQuestion.text" placeholder="Enter question">
+            </div>
+            <div>
+                <label>Answer</label>
+                <input type="text" ng-model="questionsController.newQuestion.answer" placeholder="Enter answer">
+            </div>
+            <div >
+                <label >Tag</label>
+                <input type="text" ng-model="questionsController.newQuestion.tag" placeholder="Enter tag">
+            </div>
+            <button type="submit" class="btn btn-info btn-md">Create</button>
+        </form>
     </div>
 </ui-view>
 

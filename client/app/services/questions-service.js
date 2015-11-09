@@ -14,7 +14,7 @@ angular.module('knowitall.services.questions', [])
   service.showAllQuestions = function () {
     return $http({
       method: 'GET',
-      url: 'api/questions'
+      url: '/api/questions'
     })
     .then(function (resp) {
       return resp.data;
