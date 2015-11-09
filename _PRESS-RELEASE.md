@@ -15,31 +15,46 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
+
+ ## Retain what you learn
+__Description:__ An app to generate questions and answers to help people retain information more effectively. When you read something on the web or learn something new, you can create a question and answer out of it and then save it. Review your questions at any time. Tag questions. Similar to flash cards, but uses spaced repetition and buffers to help you learn more effectively.
+
+__Functionality__:
+- Input form to add a new question and the answer user would like to remember
+- Tags: lets you tag a question (e.g. JavaScript, Music, People Names, etc.)
+- Submit button pushes user's question to database
+- User profile page that shows all their questions
+  - Button to delete questions
+  - Button to edit questions
+- Quiz me!
+    - __Optional:__ Pick a category to be quizzed on (default is all questions)
+    - Randomly picks questions from user's question list and generates quiz
+    - If you get it right, pop off the question from list so you don’t get asked again in the current session
+    - Iterate until user has gone through all the question OR user decides to exit the quiz
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
-  Knowit All
+  * Knowit All
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  * For any leaner who wants to learn more effectively by retaining what they learn. 
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  * An app to generate questions and answers. When you read something on the web or learn something new, you can create a question and answer out of it, tag it into an appropriate category and then save it. Review your questions at any time. Similar to flash cards, but uses spaced repetition techniques and auto-generated quizzes to help ease the learning process without putting too much burden on the user to remember to "learn".
 
 ## Problem ##
-  > Describe the problem your product solves.
+  * We learn so much new and useful information everyday but unfortunately retain a negligible percentage of that information. 
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  * Knowit All solves this problem by creating a place where users can store all their knowledge. Anytime a user wants to remember something, they enter it as a question and Knowit All will guarantee that the user will be remember this forever. 
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  * "Knowit All is the future of learning and education. Every classroom, student and learner in the world should be using KnowIt All if they want to become smart."
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  * Create a question, create the answer, tag it and enjoy!
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  * "Knowit All seriously changes the game when it comes to learning anything. All I have to do is tell KnowIt All that I want to rememeber something. Then it does the job of teaching it to me in a fun and effective way."
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+ * Beta release of the product will be November 10, 2015. Don't miss out!
