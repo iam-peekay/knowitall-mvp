@@ -1,10 +1,12 @@
 <ui-view>
-<div ng-if="true">
+<button class="btn btn-info btn-md .submit-button" ng-click="questionsController.quizMe()">Toggle quiz!</button>
+<div ng-if="!questionsController.quizTime">
 <div ng-repeat="question in questionsController.questions | filter: {_tag: questionsController.getCurrentTag()}">
   <div class="question">
     <div> Question: {{question.text}} </div>
     <div> Answer:  {{question.answer}} </div>
     <div> Tag: {{question._tag}} </div>
+    <button type="button" class="close" ng-click="questionsController.deleteQuestion(question)">&times;</button>
   </div>
 </div>
 <hr/>

@@ -15,3 +15,6 @@ angular.module('knowitall', [
 
     $urlRouterProvider.otherwise('/');
 });
+
+
+// GET UPDATE TO WORK

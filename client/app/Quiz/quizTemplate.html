@@ -1,21 +1,24 @@
+<ui-view>
 <div class="quiz-area" ng-show="quizController.inProgress">
-  <div ng-show="!quizController.quizOver">
-    <h2>{{quizController.question}}</h2>
+  <div ng-show="!quizController.quizOver" class="center">
+    <h3>Question: {{quizController.question}}</h3>
     <ul>
+      <label> Answer: </label>
       <input type="text" name="answer">
     </ul>
-    <button ng-click="quizController.checkAnswer()" ng-show="quizController.answerMode">Submit</button>
+    <button type="submit" class="btn btn-info btn-md .submit-button" ng-click="quizController.checkAnswer()" ng-show="quizController.answerMode">Submit</button>
 
     <div ng-show="!quizController.answerMode">
-      <button ng-click="quizController.nextQuestion()" class="next-question">Next</button>
-      <span ng-show="quizController.correctAns">That is correct!</span>
-      <span ng-show="!quizController.correctAns">Sorry, that is an incorrect answer.</span>
+      <span ng-show="quizController.correctAns">Bingo!</span>
+      <span ng-show="!quizController.correctAns">Sorry, that is incorrect</span>
+      <p></p>
+      <button ng-click="quizController.nextQuestion()" class="btn btn-info btn-md .submit-button">Next question</button>
     </div>
   </div>
 
   <div ng-show="quizController.quizOver">
     <h2>Quiz is over</h2>
-    <button ng-click="quizController.reset()">Play again</button>
+    <button type="submit" class="btn btn-info btn-md .submit-button" ng-click="quizController.reset()">Play again</button>
   </div>
 
   <div id="score">
@@ -24,6 +27,8 @@
 </div>
 
 <div class="intro" ng-show="!quizController.inProgress">
-  <p>Welcome to the QuizApp</p>
-  <button id="startQuiz" ng-click="quizController.startQuiz()">Start the Quiz</button>
+  <p>Do you KnowIt All?</p>
+  <button type="submit" class="btn btn-info btn-md .submit-button" ng-click="quizController.startQuiz()">Start the Quiz</button>
 </div>
+
+</ui-view>

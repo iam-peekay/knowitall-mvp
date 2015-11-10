@@ -4,16 +4,30 @@ var Q = require('q');
 var util = require('../config/utils.js');
 
 module.exports = {
-  fetchAllQuestions: function (request, response, next) {
+  fetchAllQuestions: function (req, res, next) {
     // Create a promise returning function
     var findAll = Q.nbind(Question.find, Question);
 
     findAll({})
       .then(function (questions) {
-        response.json(questions);
+        res.json(questions);
       })
       .fail(function (error) {
         next(error);
+      });
+  },
+
+  deleteQuestion: function (req, res, next) {
+    console.log('got here')
+    var findTag = Q.nbind(Tag.findOne, Tag);
+    var text = req.body.text;
+    var tag = req.body._tag;
+    Question.find({text: text}).remove().exec();
+    findTag({name: tag})
+      .then(function (foundTag) {
+        if (foundTag.questions.length === 0) {
+          foundTag.remove().exec();
+        }
       });
   },
 

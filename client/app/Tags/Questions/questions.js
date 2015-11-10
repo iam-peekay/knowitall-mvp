@@ -32,6 +32,8 @@ angular.module('tags.questions', ['knowitall.services.tags', 'knowitall.services
     returnToQuestions();
   }
 
+  questionsController.deleteQuestion = QuestionsService.deleteQuestion;
+
   function returnToQuestions() {
     $state.go('knowitall.tags.questions', {tag: $stateParams.tag});
   }
@@ -46,13 +48,8 @@ angular.module('tags.questions', ['knowitall.services.tags', 'knowitall.services
    }
 
    function quizMe () {
-    QuestionsService.quizMe(questionsController.newQuestion, function (correctness) {
-      if (correctness === true) {
-        window.alert('yay!');
-      } else {
-        window.alert('boo!');
-      }
-    });
+    questionsController.quizTime = !questionsController.quizTime;
+    console.log(questionsController.quizTime)
    }
 
   questionsController.addNewQuestion = addNewQuestion;

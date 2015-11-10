@@ -37,7 +37,7 @@ angular.module('quiz', ['tags.questions', 'knowitall.services.tags', 'knowitall.
 
   function getNextQuestion () {
     var q = quizController.quizQuestions[quizController.id];
-    console.log(q)
+    console.log(q);
     if (q) {
       quizController.question = q.text;
       quizController.answer = q.answer;
@@ -50,7 +50,7 @@ angular.module('quiz', ['tags.questions', 'knowitall.services.tags', 'knowitall.
   function checkAnswer () {
     var answer = $("input[name='answer']").val();
     $("input[name='answer']").val('');
-    console.log(answer)
+    console.log(answer);
     if (answer === quizController.answer) {
       quizController.score++;
       quizController.scorePercentage = (quizController.score / 5) * 100;

@@ -22,15 +22,15 @@ angular.module('knowitall.services.questions', [])
     });
   };
 
-  service.quizMe = function (question, callback) {
-    var correct;
-    var attemptedAnswer = question.attempt.toLowerCase();
-    var correctAnswer = question.text.toLowerCase();
-    if (attemptedAnswer === correctAnswer) {
-      correct = true;
-    } else {
-      correct = false;
-    }
-    callback(correct);
-  };
+  service.deleteQuestion = function(question) {
+    console.log(question);
+    return $http({
+      method: 'PUT',
+      url: '/api/questions/delete',
+      data: question
+    })
+    .then(function (resp) {
+      console.log('deleted!');
+    })
+  }
 });
