@@ -25,7 +25,11 @@ textarea {
 }
 
 .submit-button {
-  width: 20%;
+  width: 30%;
+}
+
+.submit-quiz {
+  width: 30%;
 }
 
 .logo {
@@ -35,6 +39,12 @@ textarea {
 .question {
   margin-top: 70px;
 }
+
+.question-mark {
+  height: 20px;
+  height: 30px;
+}
+
 
 /*styling for simple blinking cursor*/
 /*.blinking-cursor {

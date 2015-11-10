@@ -4,7 +4,7 @@ angular.module('knowitall.services.questions', [])
   var questions;
 
   service.addNewQuestion = function (question) {
-    console.log('client side before adding question', question)
+    console.log('client side before adding question', question);
     return $http({
       method: 'POST',
       url: '/api/questions',
@@ -22,4 +22,15 @@ angular.module('knowitall.services.questions', [])
     });
   };
 
+  service.quizMe = function (question, callback) {
+    var correct;
+    var attemptedAnswer = question.attempt.toLowerCase();
+    var correctAnswer = question.text.toLowerCase();
+    if (attemptedAnswer === correctAnswer) {
+      correct = true;
+    } else {
+      correct = false;
+    }
+    callback(correct);
+  };
 });

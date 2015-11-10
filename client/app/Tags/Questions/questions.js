@@ -45,7 +45,18 @@ angular.module('tags.questions', ['knowitall.services.tags', 'knowitall.services
      returnToQuestions();
    }
 
+   function quizMe () {
+    QuestionsService.quizMe(questionsController.newQuestion, function(correctness) {
+      if (correctness === true) {
+        window.alert('yay!');
+      } else {
+        window.alert('boo!');
+      }
+    });
+   }
+
   questionsController.addNewQuestion = addNewQuestion;
+  questionsController.quizMe = quizMe;
 
   resetForm();
 });

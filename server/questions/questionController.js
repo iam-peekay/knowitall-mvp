@@ -21,7 +21,6 @@ module.exports = {
     var text = req.body.text;
     var answer = req.body.answer;
     var tag = req.body.tag;
-    console.log(req.body)
     var createQuestion = Q.nbind(Question.create, Question);
     var findTag = Q.nbind(Tag.findOne, Tag);
     var createTag = Q.nbind(Tag.create, Tag);
@@ -63,7 +62,6 @@ module.exports = {
         });
       }
     });
-
     // findTag({_tag: tag})
     //   .then(function (foundTag) {
     //     if (foundTag) {

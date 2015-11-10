@@ -11,6 +11,10 @@ angular.module('tags', ['knowitall.services.tags'])
         'questions@': {
           controller: 'QuestionsController as questionsController',
           templateUrl: 'app/Tags/Questions/questions.html'
+        },
+        'quiz@': {
+          controller: 'QuizController as quizController',
+          templateUrl: 'app/Quiz/quizTemplate.html'
         }
       }
     });

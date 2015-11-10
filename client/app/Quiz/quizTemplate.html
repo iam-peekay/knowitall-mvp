@@ -1,0 +1,29 @@
+<div class="quiz-area" ng-show="quizController.inProgress">
+  <div ng-show="!quizController.quizOver">
+    <h2>{{quizController.text}}</h2>
+    <ul>
+      <input type="text" name="answer">
+    </ul>
+    <button ng-click="quizController.checkAnswer()" ng-show="quizController.answerMode">Submit</button>
+
+    <div ng-show="!quizController.answerMode">
+      <button ng-click="quizController.nextQuestion()" class="next-question">Next</button>
+      <span ng-show="quizController.correctAns">That is correct!</span>
+      <span ng-show="!quizController.correctAns">Sorry, that is an incorrect answer.</span>
+    </div>
+  </div>
+
+  <div ng-show="quizController.quizOver">
+    <h2>Quiz is over</h2>
+    <button ng-click="quizController.reset()">Play again</button>
+  </div>
+
+  <div id="score">
+    Score: {{quizController.score}}
+  </div>
+</div>
+
+<div class="intro" ng-show="!quizController.inProgress">
+  <p>Welcome to the QuizApp</p>
+  <button id="startQuiz" ng-click="quizController.startQuiz()">Start the Quiz</button>
+</div>

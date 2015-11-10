@@ -3,7 +3,8 @@ angular.module('knowitall', [
   'tags',
   'tags.questions',
   'knowitall.services.questions',
-  'knowitall.services.tags'
+  'knowitall.services.tags',
+  'quiz'
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider

@@ -1,9 +1,10 @@
 <ui-view>
+<div ng-if="true">
 <div ng-repeat="question in questionsController.questions | filter: {_tag: questionsController.getCurrentTag()}">
-  <div>
-    <span> {{question.text}} </span>
-    <span> {{question.answer}} </span>
-    <span> {{question._tag}} </span>
+  <div class="question">
+    <div> Question: {{question.text}} </div>
+    <div> Answer:  {{question.answer}} </div>
+    <div> Tag: {{question._tag}} </div>
   </div>
 </div>
 <hr/>
@@ -24,6 +25,7 @@
             <button type="submit" class="btn btn-info btn-md .submit-button">Create</button>
         </form>
     </div>
+</div>
 </ui-view>
 
 
