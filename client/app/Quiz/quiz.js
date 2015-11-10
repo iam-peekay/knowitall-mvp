@@ -19,24 +19,25 @@ angular.module('quiz', ['tags.questions', 'knowitall.services.tags', 'knowitall.
       quizController.questions = questions;
     });
 
-  function startQuiz() {
+  function startQuiz () {
+    quizController.getQuestions();
     quizController.id = 0;
     quizController.quizOver = false;
     quizController.inProgress = true;
-    quizController.getQuestions();
+    quizController.getNextQuestion();
   }
 
-  function getQuestions() {
+  function getQuestions () {
     quizController.quizQuestions = [];
     for (var i = 0; i < 5; i++) {
-      quizController.quizQuestions[i] = Math.floor(Math.random()*quizController.questions.length);
+      var rand = Math.floor(Math.random() * quizController.questions.length);
+      quizController.quizQuestions[i] = quizController.questions[rand];
     }
   }
 
-  
-
-  function getNextQuestion() {
-    var q = quizController.getQuestions[quizController.id];
+  function getNextQuestion () {
+    var q = quizController.quizQuestions[quizController.id];
+    console.log(q)
     if (q) {
       quizController.question = q.text;
       quizController.answer = q.answer;
@@ -46,10 +47,13 @@ angular.module('quiz', ['tags.questions', 'knowitall.services.tags', 'knowitall.
     }
   }
 
-  function checkAnswer() {
-    var answer = $(input[name=answer]).val();
+  function checkAnswer () {
+    var answer = $("input[name='answer']").val();
+    $("input[name='answer']").val('');
+    console.log(answer)
     if (answer === quizController.answer) {
       quizController.score++;
+      quizController.scorePercentage = (quizController.score / 5) * 100;
       quizController.correctAns = true;
     } else {
       quizController.correctAns = false;
@@ -58,13 +62,13 @@ angular.module('quiz', ['tags.questions', 'knowitall.services.tags', 'knowitall.
     quizController.answerMode = false;
   }
 
-  function nextQuestion() {
+  function nextQuestion () {
     quizController.id++;
     quizController.getNextQuestion();
   }
 
 
-  function reset() {
+  function reset () {
     quizController.inProgress = false;
     quizController.score = 0;
   }
@@ -75,5 +79,7 @@ angular.module('quiz', ['tags.questions', 'knowitall.services.tags', 'knowitall.
   quizController.checkAnswer = checkAnswer;
   quizController.nextQuestion = nextQuestion;
   quizController.reset = reset;
+
+  quizController.reset();
 
 });

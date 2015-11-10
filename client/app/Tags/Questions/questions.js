@@ -46,7 +46,7 @@ angular.module('tags.questions', ['knowitall.services.tags', 'knowitall.services
    }
 
    function quizMe () {
-    QuestionsService.quizMe(questionsController.newQuestion, function(correctness) {
+    QuestionsService.quizMe(questionsController.newQuestion, function (correctness) {
       if (correctness === true) {
         window.alert('yay!');
       } else {

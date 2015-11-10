@@ -1,6 +1,6 @@
 <div class="quiz-area" ng-show="quizController.inProgress">
   <div ng-show="!quizController.quizOver">
-    <h2>{{quizController.text}}</h2>
+    <h2>{{quizController.question}}</h2>
     <ul>
       <input type="text" name="answer">
     </ul>
@@ -19,7 +19,7 @@
   </div>
 
   <div id="score">
-    Score: {{quizController.score}}
+    Score: {{quizController.scorePercentage}}%
   </div>
 </div>
 
