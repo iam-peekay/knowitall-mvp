@@ -20,6 +20,11 @@ var QuestionSchema = new Schema({
   answer: {
     type: String,
     required: true
+  },
+
+  _creator: {
+    type: String,
+    ref: 'Tag'
   }
 });
 

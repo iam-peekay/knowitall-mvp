@@ -15,12 +15,11 @@ var TagSchema = new Schema({
 
   questionCount: {
     type: Number,
-    required: true,
-    default: 1
+    required: true
   },
 
   questions: [{
-    type: Schema.Types.String,
+    type: Schema.Types.ObjectId,
     ref: 'Question'
   }]
 
@@ -32,7 +31,7 @@ TagSchema.pre('save', function (next) {
   next();
 });
 
-var Tag = mongoose.model('Tag', TagSchema);
+var Tag = mongoose.model('Tag', TagSchema, 'tags');
 
 // Tag.find({}).remove().exec();
 // Tag.create({ name: 'test3' }, function (err, small) {
@@ -40,13 +39,13 @@ var Tag = mongoose.model('Tag', TagSchema);
 //   console.log('Tag model created!');
 // });
 
-// Tag.create({ name: 'General' }, function (err, small) {
+// Tag.create({ name: 'General', questionCount: 0 }, function (err, small) {
 //   if (err) return console.log('error creating Tag model');
 //   console.log('Tag model created!');
 // });
 
 
-// Tag.remove({ name: 'sucks' }, function (err, small) {
+// Tag.remove({ name: 'wont' }, function (err, small) {
 //   if (err) return console.log('error removing Tag document');
 //   console.log('Tag document removed!');
 // });

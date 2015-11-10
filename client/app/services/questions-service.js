@@ -12,7 +12,7 @@ angular.module('knowitall.services.questions', [])
       data: question
     })
     .then(function (resp) {
-      return resp.data; 
+      return resp.data;
     });
   };
 

@@ -81,7 +81,7 @@ angular.module('quiz', ['tags.questions', 'knowitall.services.tags', 'knowitall.
   quizController.reset = reset;
 
   // quizController.quizTime = QuestionsService.quizTime;
-  
+
   quizController.reset();
 
 });

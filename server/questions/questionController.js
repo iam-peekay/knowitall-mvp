@@ -32,7 +32,7 @@ module.exports = {
           } else {
             findTag({name: tag})
             .then(function (newUpdatedTag) {
-              if (newUpdatedTag.questionCount <= 0) {
+              if (newUpdatedTag.questionCount <= 1) {
                 newUpdatedTag.remove().exec();
             }
             });
@@ -53,47 +53,56 @@ module.exports = {
     .then(function (foundTag) {
       if (foundTag) {
         foundTag.questionCount = foundTag.questionCount + 1;
-        foundTag.save(function (err) {
-          if (err) {
-            return console.error(err);
-          }
           var newQuestion = new Question({
             text: text,
             answer: answer,
-            _tag: foundTag.name
+            _tag: foundTag.name,
+            _creator: foundTag._id
           });
           newQuestion.save(function (err) {
             if (err) {
               return console.error(err);
             }
+            foundTag.questions.push(newQuestion);
+            foundTag.save(function (err) {
+              if (err) {
+                return console.error(err);
+              }
+            });
+            console.log('new question', newQuestion);
             res.json(newQuestion);
           });
-        });
+
       } else {
+
         var newTag = new Tag({
           name: tag,
           questionCount: 1
         });
-
-        newTag.save(function (err) {
-          if (err) {
-            return console.error(err);
-          }
-          var newQuestion = new Question({
-            text: text,
-            answer: answer,
-            _tag: newTag.name
-          });
-
-          newQuestion.save(function (err) {
-            if (err) {
-              console.error(err);
-            } else {
-              res.json(newQuestion);
-            }
-          });
+        var newQuestion = new Question({
+          text: text,
+          answer: answer,
+          _tag: newTag.name,
+          _creator: newTag._id
         });
-      }
+        newQuestion.save(function (err) {
+          if (err) {
+            console.error(err);
+          } else {
+            newTag.save(function (err) {
+              if (err) {
+                return console.error(err);
+              }
+              newTag.questions.push(newQuestion);
+              res.json(newQuestion);
+            });
+          }
+        });
+    }
+      Question.findOne({text: text}).populate('_creator').exec(function (err, story) {
+        if (err) return console.error(err);
+        console.log('successfully populated!')
+      });
     });
     // findTag({_tag: tag})
     //   .then(function (foundTag) {
