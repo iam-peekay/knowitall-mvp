@@ -21,7 +21,6 @@ var QuestionSchema = new Schema({
     type: String,
     required: true
   }
-  
 });
 
 var Question = mongoose.model('Question', QuestionSchema);

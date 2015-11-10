@@ -45,6 +45,25 @@ textarea {
   height: 30px;
 }
 
+.btn {
+  background: #586F7C;
+  color: #F4F4F9;
+  border: 0 none;
+}
+
+.toggle-quiz {
+  margin-left: 85%;
+}
+
+#question-element {
+  border: 1px #2F4550 solid;
+  width: 85%;
+  padding: 20px;
+}
+
+#navbar-custom {
+  color: #586F7C;
+}
 
 /*styling for simple blinking cursor*/
 /*.blinking-cursor {

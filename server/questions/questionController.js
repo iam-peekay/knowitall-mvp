@@ -24,14 +24,14 @@ module.exports = {
     Question.find({text: text}).remove().exec();
     findTag({name: tag})
       .then(function (foundTag) {
+        console.log(foundTag);
         foundTag.questionCount -= 1;
         foundTag.save(function (err) {
           if (err) {
             console.log(err);
           } else {
-            console.log(foundTag)
             findTag({name: tag})
-            .then(function(newUpdatedTag) {
+            .then(function (newUpdatedTag) {
               if (newUpdatedTag.questionCount <= 0) {
                 newUpdatedTag.remove().exec();
             }
@@ -51,7 +51,6 @@ module.exports = {
 
     findTag({name: tag})
     .then(function (foundTag) {
-      console.log('found tag', foundTag)
       if (foundTag) {
         foundTag.questionCount = foundTag.questionCount + 1;
         foundTag.save(function (err) {
@@ -61,7 +60,7 @@ module.exports = {
           var newQuestion = new Question({
             text: text,
             answer: answer,
-            _tag: foundTag.name,
+            _tag: foundTag.name
           });
           newQuestion.save(function (err) {
             if (err) {

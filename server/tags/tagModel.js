@@ -20,7 +20,7 @@ var TagSchema = new Schema({
   },
 
   questions: [{
-    type: String,
+    type: Schema.Types.String,
     ref: 'Question'
   }]
 

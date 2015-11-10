@@ -2,6 +2,7 @@ angular.module('knowitall.services.questions', [])
 .service('QuestionsService', function ($http, $q) {
   var service = this;
   var questions;
+  this.quizTime = false;
 
   service.addNewQuestion = function (question) {
     console.log('client side before adding question', question);
@@ -9,6 +10,9 @@ angular.module('knowitall.services.questions', [])
       method: 'POST',
       url: '/api/questions',
       data: question
+    })
+    .then(function (resp) {
+      return resp.data; 
     });
   };
 
@@ -23,14 +27,20 @@ angular.module('knowitall.services.questions', [])
   };
 
   service.deleteQuestion = function (question) {
-    console.log('deleting from client side this question: ', question)
     return $http({
       method: 'PUT',
       url: '/api/questions/delete',
       data: question
     })
     .then(function (resp) {
-      console.log('deleted!');
+       console.log('deleting complete from client side', question);
+      return resp.data;
     });
   };
+
+  service.quizTime = function () {
+    this.quizTime = !this.quizTime;
+    return this.quizTime;
+  };
+
 });

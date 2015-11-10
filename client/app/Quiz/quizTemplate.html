@@ -1,4 +1,5 @@
 <ui-view>
+<div ng-hide="false">
 <div class="quiz-area" ng-show="quizController.inProgress">
   <div ng-show="!quizController.quizOver" class="center">
     <h3>Question: {{quizController.question}}</h3>
@@ -30,5 +31,5 @@
   <p>Do you KnowIt All?</p>
   <button type="submit" class="btn btn-info btn-md .submit-button" ng-click="quizController.startQuiz()">Start the Quiz</button>
 </div>
-
+</div>
 </ui-view>

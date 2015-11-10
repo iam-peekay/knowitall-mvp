@@ -21,18 +21,15 @@ angular.module('tags.questions', ['knowitall.services.tags', 'knowitall.services
       questionsController.questions = questions;
     });
 
-  questionsController.getCurrentTag = TagsService.getCurrentTag;
-
-  questionsController.getCurrentTagName = TagsService.getCurrentTagName;
-
-
   function addNewQuestion () {
-    console.log('adding new question');
-    QuestionsService.addNewQuestion(questionsController.newQuestion);
-    returnToQuestions();
+    QuestionsService.addNewQuestion(questionsController.newQuestion)
+      .then(function (newQuestion) {
+        questionsController.questions.push(newQuestion);
+        questionsController.addingQuestion = false;
+        returnToQuestions();
+      });
   }
 
-  questionsController.deleteQuestion = QuestionsService.deleteQuestion;
 
   function returnToQuestions() {
     $state.go('knowitall.tags.questions', {tag: $stateParams.tag});
@@ -49,9 +46,23 @@ angular.module('tags.questions', ['knowitall.services.tags', 'knowitall.services
 
    function quizMe () {
     questionsController.quizTime = !questionsController.quizTime;
+    QuestionsService.quizTime();
    }
 
+   function deleteQuestion (question) {
+    var copyOfQuestion = angular.copy(question);
+    QuestionsService.deleteQuestion(question);
+    var index = _.findIndex(questionsController.questions, function (question) {
+        return question.text === copyOfQuestion.text;
+      });
+        console.log(index, 'index');
+        questionsController.questions.splice(index, 1);
+   }
+
+  questionsController.getCurrentTag = TagsService.getCurrentTag;
+  questionsController.getCurrentTagName = TagsService.getCurrentTagName;
   questionsController.addNewQuestion = addNewQuestion;
+  questionsController.deleteQuestion = deleteQuestion;
   questionsController.quizMe = quizMe;
 
   resetForm();
