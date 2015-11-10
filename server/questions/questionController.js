@@ -18,16 +18,26 @@ module.exports = {
   },
 
   deleteQuestion: function (req, res, next) {
-    console.log('got here')
     var findTag = Q.nbind(Tag.findOne, Tag);
     var text = req.body.text;
     var tag = req.body._tag;
     Question.find({text: text}).remove().exec();
     findTag({name: tag})
       .then(function (foundTag) {
-        if (foundTag.questions.length === 0) {
-          foundTag.remove().exec();
-        }
+        foundTag.questionCount -= 1;
+        foundTag.save(function (err) {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(foundTag)
+            findTag({name: tag})
+            .then(function(newUpdatedTag) {
+              if (newUpdatedTag.questionCount <= 0) {
+                newUpdatedTag.remove().exec();
+            }
+            });
+          }
+        });
       });
   },
 
@@ -41,7 +51,9 @@ module.exports = {
 
     findTag({name: tag})
     .then(function (foundTag) {
+      console.log('found tag', foundTag)
       if (foundTag) {
+        foundTag.questionCount = foundTag.questionCount + 1;
         foundTag.save(function (err) {
           if (err) {
             return console.error(err);
@@ -49,7 +61,7 @@ module.exports = {
           var newQuestion = new Question({
             text: text,
             answer: answer,
-            _tag: foundTag.name
+            _tag: foundTag.name,
           });
           newQuestion.save(function (err) {
             if (err) {
@@ -60,7 +72,8 @@ module.exports = {
         });
       } else {
         var newTag = new Tag({
-          name: tag
+          name: tag,
+          questionCount: 1
         });
 
         newTag.save(function (err) {
@@ -72,7 +85,14 @@ module.exports = {
             answer: answer,
             _tag: newTag.name
           });
-          res.json(newQuestion);
+
+          newQuestion.save(function (err) {
+            if (err) {
+              console.error(err);
+            } else {
+              res.json(newQuestion);
+            }
+          });
         });
       }
     });

@@ -22,8 +22,8 @@ angular.module('knowitall.services.questions', [])
     });
   };
 
-  service.deleteQuestion = function(question) {
-    console.log(question);
+  service.deleteQuestion = function (question) {
+    console.log('deleting from client side this question: ', question)
     return $http({
       method: 'PUT',
       url: '/api/questions/delete',
@@ -31,6 +31,6 @@ angular.module('knowitall.services.questions', [])
     })
     .then(function (resp) {
       console.log('deleted!');
-    })
-  }
+    });
+  };
 });

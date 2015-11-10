@@ -1,5 +1,5 @@
 var Tag = require('./tagModel.js');
-var User = require('../users/userModel.js');
+var Question = require('../questions/questionModel.js');
 var Q = require('q');
 var util = require('../config/utils.js');
 
@@ -22,7 +22,8 @@ module.exports = {
     var createTag = Q.nbind(Tag.create, Tag);
 
     var newTag = {
-      name: name
+      name: name,
+      questionCount: 1
     };
     createTag(newTag)
     .then(function (createdTag) {

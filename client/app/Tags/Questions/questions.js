@@ -49,7 +49,6 @@ angular.module('tags.questions', ['knowitall.services.tags', 'knowitall.services
 
    function quizMe () {
     questionsController.quizTime = !questionsController.quizTime;
-    console.log(questionsController.quizTime)
    }
 
   questionsController.addNewQuestion = addNewQuestion;
