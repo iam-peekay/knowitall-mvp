@@ -17,7 +17,6 @@ angular.module('knowitall.services.tags', [])
       url: '/api/tags'
     })
     .then(function (result) {
-      console.log(result)
       return result.data;
     });
   };
@@ -31,7 +30,8 @@ angular.module('knowitall.services.tags', [])
   };
 
   service.getCurrentTagName = function () {
-    return currentTag ? currentTag.name : '';
+    return currentTag ? currentTag : '';
+
   };
 
 

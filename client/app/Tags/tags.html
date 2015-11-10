@@ -1,6 +1,6 @@
 <a ui-sref="knowitall.tags"><h2>Knowit All</h2></a>
 <ul class="nav nav-sidebar">
-    <li ng-repeat="tag in tagsController.tags" ng-class="{'active':isCurrentTag(tag)}">
+    <li ng-repeat="tag in tagsController.tags" ng-click="setCurrentTag(tag)">
         <a ui-sref="knowitall.tags.questions({tag:tag.name})">
             {{tag.name}}
         </a>

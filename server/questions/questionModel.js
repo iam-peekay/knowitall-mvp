@@ -30,7 +30,9 @@ QuestionSchema.pre('save', function (next) {
 });
 
 
-// Question.remove({ text: 'question9' }, function (err, small) {
+// Question.find({}).remove().exec();
+
+// Question.remove({ text: 'question3' }, function (err, small) {
 //   if (err) return console.log('error removing Tag document');
 //   console.log('Question document removed!');
 // });

@@ -27,6 +27,7 @@ TagSchema.pre('save', function (next) {
 
 var Tag = mongoose.model('Tag', TagSchema);
 
+// Tag.find({}).remove().exec();
 // Tag.create({ name: 'test3' }, function (err, small) {
 //   if (err) return console.log('error creating Tag model');
 //   console.log('Tag model created!');
@@ -38,7 +39,7 @@ var Tag = mongoose.model('Tag', TagSchema);
 // });
 
 
-// Tag.remove({ name: 'test4' }, function (err, small) {
+// Tag.remove({ name: 'test1' }, function (err, small) {
 //   if (err) return console.log('error removing Tag document');
 //   console.log('Tag document removed!');
 // });

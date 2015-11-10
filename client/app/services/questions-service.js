@@ -4,6 +4,7 @@ angular.module('knowitall.services.questions', [])
   var questions;
 
   service.addNewQuestion = function (question) {
+    console.log('client side before adding question', question)
     return $http({
       method: 'POST',
       url: '/api/questions',

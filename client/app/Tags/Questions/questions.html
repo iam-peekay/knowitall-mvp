@@ -1,5 +1,5 @@
 <ui-view>
-<div ng-repeat="question in questionsController.questions | filter:{tag:questionsController.getCurrentTagName()}">
+<div ng-repeat="question in questionsController.questions | filter: {_tag: questionsController.getCurrentTag()}">
   <div>
     <span> {{question.text}} </span>
     <span> {{question.answer}} </span>

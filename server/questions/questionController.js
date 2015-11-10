@@ -21,7 +21,7 @@ module.exports = {
     var text = req.body.text;
     var answer = req.body.answer;
     var tag = req.body.tag;
-
+    console.log(req.body)
     var createQuestion = Q.nbind(Question.create, Question);
     var findTag = Q.nbind(Tag.findOne, Tag);
     var createTag = Q.nbind(Tag.create, Tag);
@@ -30,16 +30,20 @@ module.exports = {
     .then(function (foundTag) {
       if (foundTag) {
         foundTag.save(function (err) {
-          if (err) { console.error(err); }
+          if (err) {
+            return console.error(err);
+          }
           var newQuestion = new Question({
             text: text,
             answer: answer,
             _tag: foundTag.name
           });
           newQuestion.save(function (err) {
-            if (err) { console.error(err); }
+            if (err) {
+              return console.error(err);
+            }
             res.json(newQuestion);
-          })
+          });
         });
       } else {
         var newTag = new Tag({
@@ -47,7 +51,9 @@ module.exports = {
         });
 
         newTag.save(function (err) {
-          if (err) { console.error(err); }
+          if (err) {
+            return console.error(err);
+          }
           var newQuestion = new Question({
             text: text,
             answer: answer,
