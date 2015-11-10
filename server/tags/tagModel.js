@@ -13,11 +13,6 @@ var TagSchema = new Schema({
     unique: true
   },
 
-  questionCount: {
-    type: Number,
-    required: true
-  },
-
   questions: [{
     type: Schema.Types.ObjectId,
     ref: 'Question'

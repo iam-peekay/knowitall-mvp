@@ -50,6 +50,7 @@ angular.module('tags.questions', ['knowitall.services.tags', 'knowitall.services
    }
 
    function deleteQuestion (question) {
+    console.log('delete', question);
     var copyOfQuestion = angular.copy(question);
     QuestionsService.deleteQuestion(question);
     var index = _.findIndex(questionsController.questions, function (question) {

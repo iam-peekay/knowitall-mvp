@@ -21,24 +21,16 @@ module.exports = {
     var findTag = Q.nbind(Tag.findOne, Tag);
     var text = req.body.text;
     var tag = req.body._tag;
+    var id;
+    
     Question.find({text: text}).remove().exec();
     findTag({name: tag})
       .then(function (foundTag) {
         console.log(foundTag);
-        foundTag.questionCount -= 1;
-        foundTag.save(function (err) {
-          if (err) {
-            console.log(err);
-          } else {
-            findTag({name: tag})
-            .then(function (newUpdatedTag) {
-              if (newUpdatedTag.questionCount <= 1) {
-                newUpdatedTag.remove().exec();
-            }
-            });
-          }
+        if (foundTag.questions.length <= 0) {
+          foundTag.remove().exec();
+        }
         });
-      });
   },
 
   postNewQuestion: function (req, res, next) {
@@ -52,7 +44,7 @@ module.exports = {
     findTag({name: tag})
     .then(function (foundTag) {
       if (foundTag) {
-        foundTag.questionCount = foundTag.questionCount + 1;
+
           var newQuestion = new Question({
             text: text,
             answer: answer,
@@ -76,8 +68,7 @@ module.exports = {
       } else {
 
         var newTag = new Tag({
-          name: tag,
-          questionCount: 1
+          name: tag
         });
         var newQuestion = new Question({
           text: text,
@@ -100,8 +91,10 @@ module.exports = {
         });
     }
       Question.findOne({text: text}).populate('_creator').exec(function (err, story) {
-        if (err) return console.error(err);
-        console.log('successfully populated!')
+        if (err) {
+          return console.error(err);
+        }
+        console.log('successfully populated!');
       });
     });
     // findTag({_tag: tag})

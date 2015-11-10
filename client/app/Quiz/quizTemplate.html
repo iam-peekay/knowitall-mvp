@@ -2,22 +2,22 @@
 <div ng-hide="false">
 <div class="quiz-area" ng-show="quizController.inProgress">
   <div ng-show="!quizController.quizOver" class="center">
-    <h3>Question: {{quizController.question}}</h3>
+    <h3 class="quiz-ques">Question: {{quizController.question}}</h3>
     <ul>
       <label> Answer: </label>
       <input type="text" name="answer">
     </ul>
-    <button type="submit" class="btn btn-info btn-md .submit-button" ng-click="quizController.checkAnswer()" ng-show="quizController.answerMode">Submit</button>
+    <button type="submit" class="btn btn-info btn-md .submit-button quiz-ques" ng-click="quizController.checkAnswer()" ng-show="quizController.answerMode">Submit</button>
 
-    <div ng-show="!quizController.answerMode">
-      <span ng-show="quizController.correctAns">Bingo!</span>
+    <div ng-show="!quizController.answerMode" id="show-answer">
+      <span ng-show="quizController.correctAns">Bingo!<br/><img src="assets/snoopy.jpg" id="bingo"></span>
       <span ng-show="!quizController.correctAns">Sorry, that is incorrect</span>
       <p></p>
       <button ng-click="quizController.nextQuestion()" class="btn btn-info btn-md .submit-button">Next question</button>
     </div>
   </div>
 
-  <div ng-show="quizController.quizOver">
+  <div class="quiz-ques" ng-show="quizController.quizOver">
     <h2>Quiz is over</h2>
     <button type="submit" class="btn btn-info btn-md .submit-button" ng-click="quizController.reset()">Play again</button>
   </div>

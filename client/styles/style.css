@@ -42,7 +42,7 @@ textarea {
 
 .question-mark {
   height: 20px;
-  height: 30px;
+  width: 30px;
 }
 
 .btn {
@@ -63,6 +63,25 @@ textarea {
 
 #navbar-custom {
   color: #586F7C;
+}
+
+#bingo {
+  height: 100px;
+  width: auto;
+}
+
+#show-answer {
+  margin-left: 40px;
+}
+
+#score {
+  color: #7f0000;
+  margin-left: 40px;
+  margin-top: 20px;
+}
+
+.quiz-ques {
+  margin-left: 40px;
 }
 
 /*styling for simple blinking cursor*/
