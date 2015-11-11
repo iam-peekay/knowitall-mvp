@@ -19,17 +19,30 @@ module.exports = {
 
   deleteQuestion: function (req, res, next) {
     var findTag = Q.nbind(Tag.findOne, Tag);
+    var findQuestion = Q.nbind(Question.find, Tag);
     var text = req.body.text;
     var tag = req.body._tag;
     var id;
-    
+    console.log(text);
+    findQuestion({'text': text})
+      .then(function (err, ques) {
+        id = ques._creator;
+        // ques.remove().exec();
+      });
+  
+  // Question.find({'text': text}, function (err, obj) {
+  //   console.log(obj);
+  // });
     Question.find({text: text}).remove().exec();
     findTag({name: tag})
       .then(function (foundTag) {
         console.log(foundTag);
+        var index = foundTag.questions.indexOf(id);
+        foundTag.questions.splice(index, 1);
         if (foundTag.questions.length <= 0) {
           foundTag.remove().exec();
         }
+        foundTag.save();
         });
   },
 

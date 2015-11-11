@@ -30,9 +30,8 @@ var QuestionSchema = new Schema({
 
 var Question = mongoose.model('Question', QuestionSchema);
 
-QuestionSchema.pre('save', function (next) {
-// ANYTHING?
-  next();
+QuestionSchema.pre('remove', function (next) {
+  // this.model('Tag').remove({questions: this._id}, next);
 });
 
 
