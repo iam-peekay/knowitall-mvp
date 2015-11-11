@@ -7,5 +7,6 @@
 - Run **bower install**
 - After this, you should see the **lib** folder populated with various bower components
 - Install nodemon if it's not already installed on your computer (npm install -g nodemon)
+- Make sure you have MongoDB installed. Then open a new tab in your terminal and run **mongod**. You should see a message telling you that the connection(s) are now open. Once that's done ...
 - Run **npm start**
 - Go to http://localhost:4568 to open the application
