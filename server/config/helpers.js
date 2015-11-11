@@ -13,3 +13,5 @@ module.exports = {
     res.send(500, {error: error.message});
   }
 };
+
+// https://github.com/odhyan/quizapp-angular/blob/master/app.js
