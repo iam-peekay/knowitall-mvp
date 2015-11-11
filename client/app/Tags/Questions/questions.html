@@ -4,9 +4,9 @@
 <div ng-repeat="question in questionsController.questions | filter: {_tag: questionsController.getCurrentTag()}">
   <div class="question">
     <div id="question-element">
-    <div> Question: {{question.text}} </div>
-    <div> Answer:  {{question.answer}} </div>
-    <div> Tag: {{question._tag}} </div>
+    <div> <strong>Question: </strong> {{question.text}} </div>
+    <div> <strong>Answer: </strong>  {{question.answer}} </div>
+    <div> <strong>Tag: </strong> {{question._tag}} </div>
     </div>
     <button type="button" class="close" ng-click="questionsController.deleteQuestion(question)">&times;</button>
   </div>
@@ -18,15 +18,15 @@
         <form ng-submit="questionsController.addNewQuestion()" novalidate>
             <div class="center">
                 <label>Question Text</label>
-                <textarea type="text" ng-model="questionsController.newQuestion.text" placeholder="Enter question"></textarea>
+                <textarea type="text" ng-model="questionsController.newQuestion.text" placeholder="Enter question" spellcheck="true"></textarea>
             </div>
             <div class="center">
                 <label>Answer</label>
-                <textarea type="text" ng-model="questionsController.newQuestion.answer" placeholder="Enter answer"></textarea>
+                <textarea type="text" ng-model="questionsController.newQuestion.answer" placeholder="Enter answer" spellcheck="true"></textarea>
             </div>
             <div class="center">
                 <label >Tag</label>
-                <input type="text" ng-model="questionsController.newQuestion.tag" placeholder="Enter tag">
+                <input type="text" ng-model="questionsController.newQuestion.tag" placeholder="Enter tag" spellcheck="true">
             </div>
             <button type="submit" class="btn btn-info btn-md .submit-button">Create</button>
         </form>

@@ -29,7 +29,7 @@ module.exports = {
         id = ques._creator;
         // ques.remove().exec();
       });
-  
+
   // Question.find({'text': text}, function (err, obj) {
   //   console.log(obj);
   // });
