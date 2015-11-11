@@ -40,9 +40,17 @@ textarea {
   margin-top: 40px;
 }
 
-.question-mark {
-  height: 20px;
-  width: 30px;
+#sidebar {
+  z-index: 1000;
+  display: block;
+}
+
+.question-inside {
+  padding: 10px;
+  width: 80%;
+  background-color: #F4F4F9;
+  border-radius: 12px;
+  color: #586F7C;
 }
 
 .btn {
@@ -85,6 +93,7 @@ textarea {
 }
 
 /*styling for simple blinking cursor*/
+/*style="background-image: url(../../../assets/download.jpeg)"*/
 /*.blinking-cursor {
   font-weight: 5000;
   font-size: 24px;

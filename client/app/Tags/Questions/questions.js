@@ -11,7 +11,7 @@ angular.module('tags.questions', ['knowitall.services.tags', 'knowitall.services
       }
     });
 })
-.controller('QuestionsController', function ($stateParams, $state, TagsService, QuestionsService) {
+.controller('QuestionsController', function ($scope, $filter, $stateParams, $state, TagsService, QuestionsService) {
   var questionsController = this;
 
   TagsService.setCurrentTag($stateParams.tag);
@@ -21,12 +21,20 @@ angular.module('tags.questions', ['knowitall.services.tags', 'knowitall.services
       questionsController.questions = questions;
     });
 
+  function updateQuestions() {
+    QuestionsService.showAllQuestions()
+      .then(function (questions) {
+        questionsController.questions = questions;
+      });
+  }
+
   function addNewQuestion () {
     QuestionsService.addNewQuestion(questionsController.newQuestion)
       .then(function (newQuestion) {
         questionsController.questions.push(newQuestion);
         questionsController.addingQuestion = false;
         returnToQuestions();
+        resetForm();
       });
   }
 
@@ -65,6 +73,14 @@ angular.module('tags.questions', ['knowitall.services.tags', 'knowitall.services
   questionsController.addNewQuestion = addNewQuestion;
   questionsController.deleteQuestion = deleteQuestion;
   questionsController.quizMe = quizMe;
+  questionsController.updateQuestions = updateQuestions;
+
+  // $scope.$watch(angular.bind(this, function() { return this.questions; }), function(newVal, oldVal) {
+  //     if (newVal !== oldVal) {
+  //       var selected = $filter('filter')(questionsController.questions, {id: questionsController.questions.text});
+  //         questionsController.questions.text = selected.length ? selected[0].text : null;
+  //     }
+  //   });
 
   resetForm();
 });

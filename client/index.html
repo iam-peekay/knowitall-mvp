@@ -5,12 +5,14 @@
     <title>Know It All</title>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="lib/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="styles/animate.css" />
   </head>
   <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3 sidebar tags" ui-view="tags"></div>
+            <div class="col-sm-3 sidebar tags" id="sidebar" ui-view="tags"></div>
             <div class="col-sm-9 question" ui-view="questions"></div>
             <div class="col-sm-3 sidebar"></div>
             <div class="col-sm-9 question" ui-view="quiz"></div>
@@ -20,6 +22,7 @@
     <!-- script tags -->
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="lib/angular-xeditable/dist/js/xeditable.js"></script>
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="lib/lodash/lodash.min.js"></script>
     <script src="app/app.js"></script>

@@ -14,17 +14,21 @@ angular.module('quiz', ['tags.questions', 'knowitall.services.tags', 'knowitall.
 .controller('QuizController', function ($stateParams, $state, TagsService, QuestionsService) {
   var quizController = this;
 
-  QuestionsService.showAllQuestions()
-    .then(function (questions) {
-      quizController.questions = questions;
-    });
+  // QuestionsService.showAllQuestions()
+  //   .then(function (questions) {
+  //     quizController.questions = questions;
+  //   });
 
   function startQuiz () {
-    quizController.getQuestions();
-    quizController.id = 0;
-    quizController.quizOver = false;
-    quizController.inProgress = true;
-    quizController.getNextQuestion();
+    QuestionsService.showAllQuestions()
+      .then(function (questions) {
+        quizController.questions = questions;
+        quizController.getQuestions();
+        quizController.id = 0;
+        quizController.quizOver = false;
+        quizController.inProgress = true;
+        quizController.getNextQuestion();
+      });
   }
 
   function getQuestions () {

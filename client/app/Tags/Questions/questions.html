@@ -3,12 +3,14 @@
 <div ng-if="!questionsController.quizTime">
 <div ng-repeat="question in questionsController.questions | filter: {_tag: questionsController.getCurrentTag()}">
   <div class="question">
-    <div id="question-element">
-    <div> <strong>Question: </strong> {{question.text}} </div>
-    <div> <strong>Answer: </strong>  {{question.answer}} </div>
-    <div> <strong>Tag: </strong> {{question._tag}} </div>
+    <div class="question-inside">
+    <strong>Question: </strong> <span > {{question.text}} </span></br>
+    <strong>Answer: </strong> <span> {{question.answer}} </span></br>
+    <strong>Tag: </strong> <span> {{question._tag}} </span>
     </div>
     <button type="button" class="close" ng-click="questionsController.deleteQuestion(question)">&times;</button>
+<!--     <button type="button" class="btn-link" ui-sref="knowit.tags.questions.edit(question)"><span class="glyphicon glyphicon-pencil"></span>
+    </button> -->
   </div>
 </div>
 <hr/>

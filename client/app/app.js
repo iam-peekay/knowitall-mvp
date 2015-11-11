@@ -1,5 +1,6 @@
 angular.module('knowitall', [
   'ui.router',
+  'xeditable',
   'tags',
   'tags.questions',
   'knowitall.services.questions',
@@ -14,7 +15,8 @@ angular.module('knowitall', [
     });
 
     $urlRouterProvider.otherwise('/');
+})
+.run(function(editableOptions) {
+  editableOptions.theme = 'bs3'; 
 });
 
-
-// GET UPDATE TO WORK
