@@ -16,7 +16,7 @@ angular.module('knowitall', [
 
     $urlRouterProvider.otherwise('/');
 })
-.run(function(editableOptions) {
-  editableOptions.theme = 'bs3'; 
+.run(function (editableOptions) {
+  editableOptions.theme = 'bs3';
 });
 

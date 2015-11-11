@@ -15,7 +15,7 @@ h1 {
 textarea {
     width: 600px;
     height: 100px;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 28px
 }
 
@@ -92,6 +92,10 @@ textarea {
   margin-left: 40px;
 }
 
+.quiz-area {
+  width: 1600px;
+  font-size: 20px;
+}
 /*styling for simple blinking cursor*/
 /*style="background-image: url(../../../assets/download.jpeg)"*/
 /*.blinking-cursor {

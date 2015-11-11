@@ -2,11 +2,12 @@
 <div ng-hide="false">
 <div class="quiz-area" ng-show="quizController.inProgress">
   <div ng-show="!quizController.quizOver" class="center">
-    <h3 class="quiz-ques">Question: {{quizController.question}}</h3>
+    <h3 class="quiz-ques"><strong>Question: </strong>{{quizController.question}}</h3></br>
     <ul>
       <label> Answer: </label>
       <input type="text" name="answer" spellcheck="true">
     </ul>
+  </br>
     <button type="submit" class="btn btn-info btn-md .submit-button quiz-ques" ng-click="quizController.checkAnswer()" ng-show="quizController.answerMode">Submit</button>
 
     <div ng-show="!quizController.answerMode" id="show-answer">
