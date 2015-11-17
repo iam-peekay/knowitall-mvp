@@ -42,16 +42,15 @@ From within the root directory:
 
 ```sh
 
-Run npm install
+Run 'npm install'
 After this, you should see a node modules folder created in root directory
-Run npm install -g bower**
-Run bower install
-After this, you should see the lib folder populated with various bower components
-Install nodemon if it's not already installed (npm install -g nodemon)
-Make sure you have MongoDB installed. Then open a new tab in your terminal
-and run mongod. You should see a message telling you that the connection(s) 
-are now open. Once that's done ...
-Run npm start
+Run 'npm install -g bower'
+Run 'bower install'
+You should see the lib folder populated with various bower components
+Install nodemon if it's not already installed 'npm install -g nodemon'
+Make sure you have MongoDB installed. 
+Then open a new tab in your terminal and run 'mongod'
+Run 'npm start'
 Go to http://localhost:4568 to open the application
 
 ```
@@ -64,11 +63,9 @@ TBD
 
 Front-end: 
 - Angular
-
 Back-end: 
 - Node
 - Express
-
 Database: 
 - MongoDB
 
