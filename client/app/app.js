@@ -1,3 +1,6 @@
+/*
+Our main Angular app module and configuration. We use ui-router for managing state.
+*/
 angular.module('knowitall', [
   'ui.router',
   'xeditable',

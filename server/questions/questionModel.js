@@ -3,7 +3,7 @@ var crypto = require('crypto');
 Schema = mongoose.Schema;
 var Tag = require('../tags/tagModel.js');
 
-// declared the Question _creator property as a Number, the same type as the _id used in the UserSchema. It is important to match the type of _id to the type of ref.
+// Declared the Question _creator property as a Number, the same type as the _id used in the TagSchema. It is important to match the type of _id to the type of ref.
 // http://mongoosejs.com/docs/populate.html
 
 var QuestionSchema = new Schema({
@@ -29,10 +29,6 @@ var QuestionSchema = new Schema({
 });
 
 var Question = mongoose.model('Question', QuestionSchema);
-
-QuestionSchema.pre('remove', function (next) {
-  // this.model('Tag').remove({questions: this._id}, next);
-});
 
 
 // Question.find({}).remove().exec();

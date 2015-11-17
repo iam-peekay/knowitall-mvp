@@ -1,3 +1,9 @@
+/*
+This module contains all the code for the quiz functionality.
+The quiz is simple as it stands now: When a user clicks on the "Quiz Me!" button, 
+we generated a quiz made up of 5 random questions from the questions database. 
+Then we run the quiz and output a score out of 5.
+*/
 angular.module('quiz', ['tags.questions', 'knowitall.services.tags', 'knowitall.services.questions'])
 .config(function ($stateProvider) {
   $stateProvider
@@ -14,11 +20,7 @@ angular.module('quiz', ['tags.questions', 'knowitall.services.tags', 'knowitall.
 .controller('QuizController', function ($stateParams, $state, TagsService, QuestionsService) {
   var quizController = this;
 
-  // QuestionsService.showAllQuestions()
-  //   .then(function (questions) {
-  //     quizController.questions = questions;
-  //   });
-
+  // Sets the state variables for quiz and accmulates questions for quiz
   function startQuiz () {
     QuestionsService.showAllQuestions()
       .then(function (questions) {
@@ -31,6 +33,7 @@ angular.module('quiz', ['tags.questions', 'knowitall.services.tags', 'knowitall.
       });
   }
 
+  // Generates 5 random questions from our questions database
   function getQuestions () {
     quizController.quizQuestions = [];
     for (var i = 0; i < 5; i++) {
@@ -39,9 +42,9 @@ angular.module('quiz', ['tags.questions', 'knowitall.services.tags', 'knowitall.
     }
   }
 
+
   function getNextQuestion () {
     var q = quizController.quizQuestions[quizController.id];
-    console.log(q);
     if (q) {
       quizController.question = q.text;
       quizController.answer = q.answer;
@@ -77,6 +80,7 @@ angular.module('quiz', ['tags.questions', 'knowitall.services.tags', 'knowitall.
     quizController.score = 0;
   }
 
+  // Define functions that we want to export 
   quizController.startQuiz = startQuiz;
   quizController.getQuestions = getQuestions;
   quizController.getNextQuestion = getNextQuestion;

@@ -8,6 +8,7 @@ module.exports = {
     // Create a promise returning function
     var findAll = Q.nbind(Question.find, Question);
 
+    // Find al questions in our questions model and return as a json object
     findAll({})
       .then(function (questions) {
         res.json(questions);
@@ -17,8 +18,17 @@ module.exports = {
       });
   },
 
+  // This is where it gets interesting. Our questions are associated with tags 
+  // as a 1:Many relationship in our Mongo database
+  // (i.e. A tag can have many questions, and a question can only have one tag)
+  // So when we delete a question, we must also delete that question from the tag where 
+  // this question lies. These questions are listed as an array of ObjectIds in the associated Tags.
+  // Mongo does not handle the deletion of this association for us automatically. Hence, this is
+  // why we find the id of the question we are deleting using the "ques._creator" property we 
+  // set up when defining the relationship. And we use this id to delete it from the questions 
+  // array in the associated tag.
   deleteQuestion: function (req, res, next) {
-    var findTag = Q.nbind(Tag.findOne, Tag);
+    funct
     var findQuestion = Q.nbind(Question.find, Tag);
     var text = req.body.text;
     var tag = req.body._tag;
@@ -30,9 +40,6 @@ module.exports = {
         // ques.remove().exec();
       });
 
-  // Question.find({'text': text}, function (err, obj) {
-  //   console.log(obj);
-  // });
     Question.find({text: text}).remove().exec();
     findTag({name: tag})
       .then(function (foundTag) {
@@ -46,6 +53,11 @@ module.exports = {
         });
   },
 
+  // When we post a new question, we must also create the associate with it's Tag. 
+  // Hence, we declare the Question _creator property as a Number, the same type
+  // as the _id used in the TagSchema. Then we "populate"  the new question's _creator 
+  // property to create the association. This is how it's done in Mongo. 
+  // See the docs for reference. // http://mongoosejs.com/docs/populate.html
   postNewQuestion: function (req, res, next) {
     var text = req.body.text;
     var answer = req.body.answer;
@@ -110,32 +122,5 @@ module.exports = {
         console.log('successfully populated!');
       });
     });
-    // findTag({_tag: tag})
-    //   .then(function (foundTag) {
-    //     if (foundTag) {
-    //       return foundTag;
-    //     } else {
-    //       var newTag = {
-    //         name: tag
-    //       };
-    //       return createTag(newTag)
-    //     }
-    //   })
-    //   .then(function (tag) {
-    //     var newQuestion = {
-    //       text: text,
-    //       answer: answer,
-    //       _tag: tag.name
-    //     };
-    //     createQuestion(newQuestion)
-    //   })
-    //   .then(function (createdQuestion) {
-    //     if (createdQuestion) {
-    //       res.json(createdQuestion);
-    //     }
-    //   })
-    //   .fail(function (error) {
-    //     next(error);
-    //   });
   }
 };

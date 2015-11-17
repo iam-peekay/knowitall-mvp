@@ -3,7 +3,8 @@ var crypto = require('crypto');
 Schema = mongoose.Schema;
 var Question = require('../questions/questionModel.js');
 
-// declared the Question _creator property as a Number, the same type as the _id used in the UserSchema. It is important to match the type of _id to the type of ref.
+// Tags are associated with Questions through the questions field. It's ref is therefore 
+// set to be the Question model. It is important to match the type of _id to the type of ref.
 // http://mongoosejs.com/docs/populate.html
 
 var TagSchema = new Schema({
@@ -20,11 +21,6 @@ var TagSchema = new Schema({
 
 });
 
-
-TagSchema.pre('save', function (next) {
-// ANYTHING?
-  next();
-});
 
 var Tag = mongoose.model('Tag', TagSchema, 'tags');
 

@@ -1,5 +1,5 @@
 var morgan = require('morgan'); // used for logging incoming request
-var bodyParser = require('body-parser');
+var bodyParser = require('body-parser'); // parses the body of incoming requests
 var helpers = require('./helpers.js'); // our custom middleware
 
 
@@ -20,8 +20,6 @@ module.exports = function (app, express) {
 
   app.use('/api/tags', tagRouter); // use tag router for all tag requests
 
-  // authentication middleware used to decode token and made available on the request
-  //app.use('/api/links', helpers.decode);
   app.use('/api/questions', questionRouter); // question router for question requests
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
