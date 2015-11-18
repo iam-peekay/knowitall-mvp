@@ -33,7 +33,7 @@ module.exports = app;
   for our two main features, questions and tags, and each feature has its own folder with a 
   model, controller, and route file. The respective files are required in middleware.js and 
   injected with its mini router. These mini routers' route file then requires the respective 
-  controller and sets up all the routes that controller then requires the respective model 
+  controller and sets up all the routes. That controller then requires the respective model 
   and sets up all our endpoints which respond to requests.
 
   Phew!

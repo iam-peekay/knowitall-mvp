@@ -8,7 +8,7 @@ module.exports = {
     // Create a promise returning function
     var findAll = Q.nbind(Question.find, Question);
 
-    // Find al questions in our questions model and return as a json object
+    // Find all questions in our questions model and return as a json object
     findAll({})
       .then(function (questions) {
         res.json(questions);
@@ -55,9 +55,10 @@ module.exports = {
 
   // When we post a new question, we must also create the associate with it's Tag. 
   // Hence, we declare the Question _creator property as a Number, the same type
-  // as the _id used in the TagSchema. Then we "populate"  the new question's _creator 
-  // property to create the association. This is how it's done in Mongo. 
-  // See the docs for reference. // http://mongoosejs.com/docs/populate.html
+  // as the _id used in the TagSchema. Then we "populate" the new question's _creator 
+  // property to create the association (line 122). This is how it's done in Mongo. 
+  // See the docs for reference. 
+  // http://mongoosejs.com/docs/populate.html
   postNewQuestion: function (req, res, next) {
     var text = req.body.text;
     var answer = req.body.answer;
@@ -76,6 +77,7 @@ module.exports = {
             _tag: foundTag.name,
             _creator: foundTag._id
           });
+
           newQuestion.save(function (err) {
             if (err) {
               return console.error(err);
@@ -95,12 +97,14 @@ module.exports = {
         var newTag = new Tag({
           name: tag
         });
+
         var newQuestion = new Question({
           text: text,
           answer: answer,
           _tag: newTag.name,
           _creator: newTag._id
         });
+
         newQuestion.save(function (err) {
           if (err) {
             console.error(err);
@@ -119,7 +123,7 @@ module.exports = {
         if (err) {
           return console.error(err);
         }
-        console.log('successfully populated!');
+        console.log('successfully populated!'); // this will set up the relationship between question and tag
       });
     });
   }

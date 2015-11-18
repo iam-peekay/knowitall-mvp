@@ -1,6 +1,6 @@
-var morgan = require('morgan'); // used for logging incoming request
-var bodyParser = require('body-parser'); // parses the body of incoming requests
-var helpers = require('./helpers.js'); // our custom middleware
+var morgan = require('morgan'); // Used for logging incoming request
+var bodyParser = require('body-parser'); // Parses the body of incoming requests
+var helpers = require('./helpers.js'); // Our custom middleware
 
 
 module.exports = function (app, express) {
@@ -18,13 +18,13 @@ module.exports = function (app, express) {
   app.use(express.static(__dirname + '/../../client'));
 
 
-  app.use('/api/tags', tagRouter); // use tag router for all tag requests
+  app.use('/api/tags', tagRouter); // Use tag router for all tag requests
 
-  app.use('/api/questions', questionRouter); // question router for question requests
+  app.use('/api/questions', questionRouter); // Question router for question requests
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
 
-  // inject our routers into their respective route files
+  // Inject our routers into their respective route files
   require('../tags/tagRoutes.js')(tagRouter);
   require('../questions/questionRoutes.js')(questionRouter);
 };
