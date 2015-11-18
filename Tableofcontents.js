@@ -40,4 +40,3 @@
 
 // #### [tags-service.js](./tags-service.html)
 // * Angular Service for Tags
-
