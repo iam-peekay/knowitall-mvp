@@ -25,16 +25,6 @@
                 </a>
               
                 
-                <a class="source" href="create.html">
-                  create.js
-                </a>
-              
-                
-                <a class="source" href="question-edit.html">
-                  question-edit.js
-                </a>
-              
-                
                 <a class="source" href="questions.html">
                   questions.js
                 </a>
@@ -110,21 +100,6 @@
                 </a>
               
                 
-                <a class="source" href="userController.html">
-                  userController.js
-                </a>
-              
-                
-                <a class="source" href="userModel.html">
-                  userModel.js
-                </a>
-              
-                
-                <a class="source" href="userRoutes.html">
-                  userRoutes.js
-                </a>
-              
-                
                 <a class="source" href="tableofcontents.html">
                   tableofcontents.js
                 </a>
@@ -153,9 +128,9 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> morgan = <span class="hljs-built_in">require</span>(<span class="hljs-string">'morgan'</span>); <span class="hljs-comment">// used for logging incoming request</span>
-<span class="hljs-keyword">var</span> bodyParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">'body-parser'</span>);
-<span class="hljs-keyword">var</span> helpers = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./helpers.js'</span>); <span class="hljs-comment">// our custom middleware</span>
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> morgan = <span class="hljs-built_in">require</span>(<span class="hljs-string">'morgan'</span>); <span class="hljs-comment">// Used for logging incoming request</span>
+<span class="hljs-keyword">var</span> bodyParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">'body-parser'</span>); <span class="hljs-comment">// Parses the body of incoming requests</span>
+<span class="hljs-keyword">var</span> helpers = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./helpers.js'</span>); <span class="hljs-comment">// Our custom middleware</span>
 
 
 <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">app, express</span>) </span>{</pre></div></div>
@@ -237,7 +212,11 @@
             <div class="content"><div class='highlight'><pre>  app.use(express.static(__dirname + <span class="hljs-string">'/../../client'</span>));
 
 
-  app.use(<span class="hljs-string">'/api/tags'</span>, tagRouter); <span class="hljs-comment">// use tag router for all tag requests</span></pre></div></div>
+  app.use(<span class="hljs-string">'/api/tags'</span>, tagRouter); <span class="hljs-comment">// Use tag router for all tag requests</span>
+
+  app.use(<span class="hljs-string">'/api/questions'</span>, questionRouter); <span class="hljs-comment">// Question router for question requests</span>
+  app.use(helpers.errorLogger);
+  app.use(helpers.errorHandler);</pre></div></div>
             
         </li>
         
@@ -248,25 +227,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <p>authentication middleware used to decode token and made available on the request
-app.use(‘/api/links’, helpers.decode);</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>  app.use(<span class="hljs-string">'/api/questions'</span>, questionRouter); <span class="hljs-comment">// question router for question requests</span>
-  app.use(helpers.errorLogger);
-  app.use(helpers.errorHandler);</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-8">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-8">&#182;</a>
-              </div>
-              <p>inject our routers into their respective route files</p>
+              <p>Inject our routers into their respective route files</p>
 
             </div>
             

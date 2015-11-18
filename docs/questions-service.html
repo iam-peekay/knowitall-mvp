@@ -25,16 +25,6 @@
                 </a>
               
                 
-                <a class="source" href="create.html">
-                  create.js
-                </a>
-              
-                
-                <a class="source" href="question-edit.html">
-                  question-edit.js
-                </a>
-              
-                
                 <a class="source" href="questions.html">
                   questions.js
                 </a>
@@ -110,21 +100,6 @@
                 </a>
               
                 
-                <a class="source" href="userController.html">
-                  userController.js
-                </a>
-              
-                
-                <a class="source" href="userModel.html">
-                  userModel.js
-                </a>
-              
-                
-                <a class="source" href="userRoutes.html">
-                  userRoutes.js
-                </a>
-              
-                
                 <a class="source" href="tableofcontents.html">
                   tableofcontents.js
                 </a>
@@ -153,14 +128,21 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre>angular.module(<span class="hljs-string">'knowitall.services.questions'</span>, [])
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+This is where we build up our questions service: common functionality 
+related to questions that we want to use.
+
+This service is reponsible for communicating with the back-end upon 
+requests from the controller. 
+
+*/</span>
+angular.module(<span class="hljs-string">'knowitall.services.questions'</span>, [])
 .service(<span class="hljs-string">'QuestionsService'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">$http, $q</span>) </span>{
   <span class="hljs-keyword">var</span> service = <span class="hljs-keyword">this</span>;
-  <span class="hljs-keyword">var</span> questions;
   <span class="hljs-keyword">this</span>.quizTime = <span class="hljs-literal">false</span>;
 
   service.addNewQuestion = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">question</span>) </span>{
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'client side before adding question'</span>, question);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'I\'ve reached the client side before adding question'</span>, question);
     <span class="hljs-keyword">return</span> $http({
       method: <span class="hljs-string">'POST'</span>,
       url: <span class="hljs-string">'/api/questions'</span>,

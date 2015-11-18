@@ -35,7 +35,7 @@ angular.module('quiz', ['tags.questions', 'knowitall.services.tags', 'knowitall.
 
   // Generates 5 random questions from our questions database
   function getQuestions () {
-    quizController.quizQuestions = [];
+    quizController.quizQuestions = []; // we cache our questions locally on the client to allow for 2-way data binding
     for (var i = 0; i < 5; i++) {
       var rand = Math.floor(Math.random() * quizController.questions.length);
       quizController.quizQuestions[i] = quizController.questions[rand];

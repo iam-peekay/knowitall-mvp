@@ -25,16 +25,6 @@
                 </a>
               
                 
-                <a class="source" href="create.html">
-                  create.js
-                </a>
-              
-                
-                <a class="source" href="question-edit.html">
-                  question-edit.js
-                </a>
-              
-                
                 <a class="source" href="questions.html">
                   questions.js
                 </a>
@@ -110,21 +100,6 @@
                 </a>
               
                 
-                <a class="source" href="userController.html">
-                  userController.js
-                </a>
-              
-                
-                <a class="source" href="userModel.html">
-                  userModel.js
-                </a>
-              
-                
-                <a class="source" href="userRoutes.html">
-                  userRoutes.js
-                </a>
-              
-                
                 <a class="source" href="tableofcontents.html">
                   tableofcontents.js
                 </a>
@@ -174,8 +149,22 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> findAll = Q.nbind(Tag.find, Tag);
-    findAll({})
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> findAll = Q.nbind(Tag.find, Tag);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>find all tags in our Mongo database and return as a json response</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    findAll({})
       .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">tags</span>) </span>{
         response.json(tags);
       })
@@ -185,13 +174,38 @@
   },
 
   addNewTag: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res, next</span>) </span>{
-    <span class="hljs-keyword">var</span> name = req.body.tagName;
+    <span class="hljs-keyword">var</span> name = req.body.tagName;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Create a promise returning function</p>
 
-    <span class="hljs-keyword">var</span> createTag = Q.nbind(Tag.create, Tag);
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> createTag = Q.nbind(Tag.create, Tag);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>add new tag to our database</p>
 
-    <span class="hljs-keyword">var</span> newTag = {
-      name: name,
-      questionCount: <span class="hljs-number">1</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> newTag = {
+      name: name
     };
     createTag(newTag)
     .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">createdTag</span>) </span>{

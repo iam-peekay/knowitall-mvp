@@ -22,7 +22,9 @@
 
 ## Usage
 
-> To begin using KnowIt All, open the application. Then create a question, create the answer, tag it and enjoy! Quiz yourself anytime you have a spare minute. Keep quizzing yourself on every question until it's engrained in your memory, then delete the question. 
+> To begin using KnowIt All, open the application. Then create a question, create the answer, tag it and save it! 
+
+> Quiz yourself on your questions anytime you have a spare minute. Keep quizzing yourself on every question until it's engrained in your memory, then delete the question once you feel like you know it. 
 
 > That's it!
 
@@ -63,9 +65,11 @@ TBD
 
 Front-end: 
 - Angular
+
 Back-end: 
 - Node
 - Express
+
 Database: 
 - MongoDB
 

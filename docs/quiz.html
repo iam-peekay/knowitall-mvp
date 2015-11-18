@@ -25,16 +25,6 @@
                 </a>
               
                 
-                <a class="source" href="create.html">
-                  create.js
-                </a>
-              
-                
-                <a class="source" href="question-edit.html">
-                  question-edit.js
-                </a>
-              
-                
                 <a class="source" href="questions.html">
                   questions.js
                 </a>
@@ -110,21 +100,6 @@
                 </a>
               
                 
-                <a class="source" href="userController.html">
-                  userController.js
-                </a>
-              
-                
-                <a class="source" href="userModel.html">
-                  userModel.js
-                </a>
-              
-                
-                <a class="source" href="userRoutes.html">
-                  userRoutes.js
-                </a>
-              
-                
                 <a class="source" href="tableofcontents.html">
                   tableofcontents.js
                 </a>
@@ -153,7 +128,13 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre>angular.module(<span class="hljs-string">'quiz'</span>, [<span class="hljs-string">'tags.questions'</span>, <span class="hljs-string">'knowitall.services.tags'</span>, <span class="hljs-string">'knowitall.services.questions'</span>])
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+This module contains all the code for the quiz functionality.
+The quiz is simple as it stands now: When a user clicks on the "Quiz Me!" button, 
+we generated a quiz made up of 5 random questions from the questions database. 
+Then we run the quiz and output a score out of 5.
+*/</span>
+angular.module(<span class="hljs-string">'quiz'</span>, [<span class="hljs-string">'tags.questions'</span>, <span class="hljs-string">'knowitall.services.tags'</span>, <span class="hljs-string">'knowitall.services.questions'</span>])
 .config(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">$stateProvider</span>) </span>{
   $stateProvider
     .state(<span class="hljs-string">'quiz'</span>, {
@@ -178,15 +159,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>QuestionsService.showAllQuestions()
-  .then(function (questions) {
-    quizController.questions = questions;
-  });</p>
+              <p>Sets the state variables for quiz and accmulates questions for quiz</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">startQuiz</span> (<span class="hljs-params"></span>) </span>{
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">startQuiz</span> (<span class="hljs-params"></span>) </span>{
     QuestionsService.showAllQuestions()
       .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">questions</span>) </span>{
         quizController.questions = questions;
@@ -196,19 +173,32 @@
         quizController.inProgress = <span class="hljs-literal">true</span>;
         quizController.getNextQuestion();
       });
-  }
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Generates 5 random questions from our questions database</p>
 
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getQuestions</span> (<span class="hljs-params"></span>) </span>{
-    quizController.quizQuestions = [];
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getQuestions</span> (<span class="hljs-params"></span>) </span>{
+    quizController.quizQuestions = []; <span class="hljs-comment">// we cache our questions locally on the client to allow for 2-way data binding</span>
     <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) {
       <span class="hljs-keyword">var</span> rand = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * quizController.questions.length);
       quizController.quizQuestions[i] = quizController.questions[rand];
     }
   }
 
+
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getNextQuestion</span> (<span class="hljs-params"></span>) </span>{
     <span class="hljs-keyword">var</span> q = quizController.quizQuestions[quizController.id];
-    <span class="hljs-built_in">console</span>.log(q);
     <span class="hljs-keyword">if</span> (q) {
       quizController.question = q.text;
       quizController.answer = q.answer;
@@ -242,9 +232,22 @@
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reset</span> (<span class="hljs-params"></span>) </span>{
     quizController.inProgress = <span class="hljs-literal">false</span>;
     quizController.score = <span class="hljs-number">0</span>;
-  }
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Define functions that we want to export </p>
 
-  quizController.startQuiz = startQuiz;
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  quizController.startQuiz = startQuiz;
   quizController.getQuestions = getQuestions;
   quizController.getNextQuestion = getNextQuestion;
   quizController.checkAnswer = checkAnswer;
@@ -254,11 +257,11 @@
         </li>
         
         
-        <li id="section-3">
+        <li id="section-5">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-3">&#182;</a>
+                <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
               <p>quizController.quizTime = QuestionsService.quizTime;</p>
 

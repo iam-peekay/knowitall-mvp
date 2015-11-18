@@ -25,16 +25,6 @@
                 </a>
               
                 
-                <a class="source" href="create.html">
-                  create.js
-                </a>
-              
-                
-                <a class="source" href="question-edit.html">
-                  question-edit.js
-                </a>
-              
-                
                 <a class="source" href="questions.html">
                   questions.js
                 </a>
@@ -110,21 +100,6 @@
                 </a>
               
                 
-                <a class="source" href="userController.html">
-                  userController.js
-                </a>
-              
-                
-                <a class="source" href="userModel.html">
-                  userModel.js
-                </a>
-              
-                
-                <a class="source" href="userRoutes.html">
-                  userRoutes.js
-                </a>
-              
-                
                 <a class="source" href="tableofcontents.html">
                   tableofcontents.js
                 </a>
@@ -153,7 +128,12 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre>angular.module(<span class="hljs-string">'tags.questions'</span>, [<span class="hljs-string">'knowitall.services.tags'</span>, <span class="hljs-string">'knowitall.services.questions'</span>])
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+This module and controller talks to our questions view and communicates with the questions service
+for requests to the bad end and other common methods that are available through the questions service.
+*/</span>
+
+angular.module(<span class="hljs-string">'tags.questions'</span>, [<span class="hljs-string">'knowitall.services.tags'</span>, <span class="hljs-string">'knowitall.services.questions'</span>])
 .config(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">$stateProvider</span>) </span>{
   $stateProvider
     .state(<span class="hljs-string">'knowitall.tags.questions'</span>, {
@@ -169,21 +149,62 @@
 .controller(<span class="hljs-string">'QuestionsController'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">$scope, $filter, $stateParams, $state, TagsService, QuestionsService</span>) </span>{
   <span class="hljs-keyword">var</span> questionsController = <span class="hljs-keyword">this</span>;
 
-  TagsService.setCurrentTag($stateParams.tag);
+  TagsService.setCurrentTag($stateParams.tag);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>We use this to initialize the app with a local cache of the current questions 
+we have in our database. It would be empty if it’s the user’s first time using the product
+This local cache is used to render the questions in the view</p>
 
-  QuestionsService.showAllQuestions()
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  QuestionsService.showAllQuestions()
     .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">questions</span>) </span>{
       questionsController.questions = questions;
-    });
+    });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Update questions if we need to</p>
 
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateQuestions</span>(<span class="hljs-params"></span>) </span>{
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateQuestions</span> (<span class="hljs-params"></span>) </span>{
     QuestionsService.showAllQuestions()
       .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">questions</span>) </span>{
         questionsController.questions = questions;
       });
-  }
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Adds a new question to our database and local cache if the users submits it on the front end</p>
 
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addNewQuestion</span> (<span class="hljs-params"></span>) </span>{
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addNewQuestion</span> (<span class="hljs-params"></span>) </span>{
     QuestionsService.addNewQuestion(questionsController.newQuestion)
       .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">newQuestion</span>) </span>{
         questionsController.questions.push(newQuestion);
@@ -191,10 +212,22 @@
         returnToQuestions();
         resetForm();
       });
-  }
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Once a user submits a new question, they return back to the current tag state</p>
 
-
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">returnToQuestions</span>(<span class="hljs-params"></span>) </span>{
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">returnToQuestions</span> (<span class="hljs-params"></span>) </span>{
     $state.go(<span class="hljs-string">'knowitall.tags.questions'</span>, {tag: $stateParams.tag});
   }
 
@@ -210,8 +243,26 @@
    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quizMe</span> (<span class="hljs-params"></span>) </span>{
     questionsController.quizTime = !questionsController.quizTime;
     QuestionsService.quizTime();
-   }
+   }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>deleting a question is tricky because we need to also delete the question from the
+tag it’s associated with in the backend. Each tag has a “questions” property with an 
+array of all it’s questions. The removal of a question from a tag is done in the back-end
+Here, we’re just finding the index of the question in the local cache and removing that 
+question so that the view can accurately reflect the deletion of the question</p>
 
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deleteQuestion</span> (<span class="hljs-params">question</span>) </span>{
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'delete'</span>, question);
     <span class="hljs-keyword">var</span> copyOfQuestion = angular.copy(question);
@@ -221,34 +272,28 @@
       });
         <span class="hljs-built_in">console</span>.log(index, <span class="hljs-string">'index'</span>);
         questionsController.questions.splice(index, <span class="hljs-number">1</span>);
-   }
-
-  questionsController.getCurrentTag = TagsService.getCurrentTag;
-  questionsController.getCurrentTagName = TagsService.getCurrentTagName;
-  questionsController.addNewQuestion = addNewQuestion;
-  questionsController.deleteQuestion = deleteQuestion;
-  questionsController.quizMe = quizMe;
-  questionsController.updateQuestions = updateQuestions;</pre></div></div>
+   }</pre></div></div>
             
         </li>
         
         
-        <li id="section-2">
+        <li id="section-7">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-2">&#182;</a>
+                <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <p>$scope.$watch(angular.bind(this, function() { return this.questions; }), function(newVal, oldVal) {
-    if (newVal !== oldVal) {
-      var selected = $filter(‘filter’)(questionsController.questions, {id: questionsController.questions.text});
-        questionsController.questions.text = selected.length ? selected[0].text : null;
-    }
-  });</p>
+              <p>Functins that we want to export</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>
+            <div class="content"><div class='highlight'><pre>  questionsController.getCurrentTag = TagsService.getCurrentTag;
+  questionsController.getCurrentTagName = TagsService.getCurrentTagName;
+  questionsController.addNewQuestion = addNewQuestion;
+  questionsController.deleteQuestion = deleteQuestion;
+  questionsController.quizMe = quizMe;
+  questionsController.updateQuestions = updateQuestions;
+
   resetForm();
 });</pre></div></div>
             

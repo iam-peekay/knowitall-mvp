@@ -25,16 +25,6 @@
                 </a>
               
                 
-                <a class="source" href="create.html">
-                  create.js
-                </a>
-              
-                
-                <a class="source" href="question-edit.html">
-                  question-edit.js
-                </a>
-              
-                
                 <a class="source" href="questions.html">
                   questions.js
                 </a>
@@ -110,21 +100,6 @@
                 </a>
               
                 
-                <a class="source" href="userController.html">
-                  userController.js
-                </a>
-              
-                
-                <a class="source" href="userModel.html">
-                  userModel.js
-                </a>
-              
-                
-                <a class="source" href="userRoutes.html">
-                  userRoutes.js
-                </a>
-              
-                
                 <a class="source" href="tableofcontents.html">
                   tableofcontents.js
                 </a>
@@ -167,7 +142,7 @@ Schema = mongoose.Schema;
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>declared the Question _creator property as a Number, the same type as the _id used in the UserSchema. It is important to match the type of _id to the type of ref.
+              <p>Declared the Question _creator property as a Number, the same type as the _id used in the TagSchema. It is important to match the type of _id to the type of ref.
 <a href="http://mongoosejs.com/docs/populate.html">http://mongoosejs.com/docs/populate.html</a></p>
 
             </div>
@@ -195,9 +170,7 @@ Schema = mongoose.Schema;
   }
 });
 
-<span class="hljs-keyword">var</span> Question = mongoose.model(<span class="hljs-string">'Question'</span>, QuestionSchema);
-
-QuestionSchema.pre(<span class="hljs-string">'remove'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">next</span>) </span>{</pre></div></div>
+<span class="hljs-keyword">var</span> Question = mongoose.model(<span class="hljs-string">'Question'</span>, QuestionSchema);</pre></div></div>
             
         </li>
         
@@ -208,11 +181,9 @@ QuestionSchema.pre(<span class="hljs-string">'remove'</span>, <span class="hljs-
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>this.model(‘Tag’).remove({questions: this._id}, next);</p>
+              <p>Question.find({}).remove().exec();</p>
 
             </div>
-            
-            <div class="content"><div class='highlight'><pre>});</pre></div></div>
             
         </li>
         
@@ -222,19 +193,6 @@ QuestionSchema.pre(<span class="hljs-string">'remove'</span>, <span class="hljs-
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
-              </div>
-              <p>Question.find({}).remove().exec();</p>
-
-            </div>
-            
-        </li>
-        
-        
-        <li id="section-5">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
               <p>Question.remove({ text: ‘test4’ }, function (err, small) {
   if (err) return console.log(‘error removing Tag document’);
@@ -246,11 +204,11 @@ QuestionSchema.pre(<span class="hljs-string">'remove'</span>, <span class="hljs-
         </li>
         
         
-        <li id="section-6">
+        <li id="section-5">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
+                <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
               <p>Question.create({ text: ‘test4’, answer: ‘boooo’, _tag: ‘love’ }, function (err, small) {
   if (err) return console.log(‘error creating Tag model’);

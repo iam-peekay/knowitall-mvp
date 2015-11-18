@@ -1,15 +1,14 @@
 /*
-This is where we build up our questions service: 
-common functionality related to questions that we want to use.
+This is where we build up our questions service: common functionality 
+related to questions that we want to use.
+
 This service is reponsible for communicating with the back-end upon 
 requests from the controller. 
-We also store a local copy of all our questions here, which are then 
-used to render the view. 
+
 */
 angular.module('knowitall.services.questions', [])
 .service('QuestionsService', function ($http, $q) {
   var service = this;
-  var questions;
   this.quizTime = false;
 
   service.addNewQuestion = function (question) {
