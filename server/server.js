@@ -3,8 +3,9 @@ var mongoose = require('mongoose');
 var path = require('path');
 var app = express();
 
+mongoURI = process.env.CUSTOMCONNSTR_MONGOLAB_URI || 'mongodb://localhost/knowitall';
 // Connect to mongo database names knowitall
-mongoose.connect('mongodb://localhost/knowitall');
+mongoose.connect(mongoURI);
 // Confirm connection
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
