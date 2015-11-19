@@ -13,7 +13,7 @@
 
 ## Table of Contents
 
-1. [Documentation] (http://127.0.0.1:4568/docs/tableofcontents.html)
+1. [Documentation] (https://pacific-wave-1642.herokuapp.com/docs/)
 2. [Usage](#Usage)
 3. [Requirements](#requirements)
 4. [Development](#development)
