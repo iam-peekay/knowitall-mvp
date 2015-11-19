@@ -6,7 +6,8 @@
   "scripts": {
     "test": "",
     "start": "node server/server.js",
-    "lint": "jscs ./"
+    "lint": "jscs ./",
+    "postinstall": "bower install"
   },
   "pre-commit": "lint",
   "devDependencies": {
