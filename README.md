@@ -1,4 +1,4 @@
-# Floatie
+# Knowit All
 
 > KnowIt All is an app to generate questions and answers to help people retain information more effectively. When you read something on the web or learn something new, you can create a question and answer out of it and then save it. Review your questions at any time. Tag questions. Similar to flash cards today, but in the future, I plan to add functionality to use spaced repetition and buffers to help you learn more effectively.
 
