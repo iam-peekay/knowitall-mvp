@@ -22,7 +22,8 @@ app.get('/docs', function (req, res) {
 require('./config/middleware.js')(app, express);
 
 // Set up the port the server should listen to
-app.listen(4568);
+var port = process.env.PORT || 4568;
+app.listen(port);
 console.log('Listening on port 4568');
 
 // Export our app for testing and flexibility
