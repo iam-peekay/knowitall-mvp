@@ -15,8 +15,7 @@ module.exports = function (app, express) {
   // Parse JSON (uniform resource locators)
   app.use(bodyParser.json());
   // Serve static files
-  app.use(express.static(__dirname + '/../../client'));
-
+  app.use('/', express.static(__dirname + '/../../client'));
 
   app.use('/api/tags', tagRouter); // Use tag router for all tag requests
 

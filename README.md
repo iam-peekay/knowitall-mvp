@@ -13,12 +13,13 @@
 
 ## Table of Contents
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+1. [Documentation] (http://127.0.0.1:4568/docs/tableofcontents.html)
+2. [Usage](#Usage)
+3. [Requirements](#requirements)
+4. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
-1. [Team](#team)
-1. [Contributing](#contributing)
+5. [Team](#team)
+6. [Contributing](#contributing)
 
 ## Usage
 

@@ -1,6 +1,6 @@
 var express = require('express');
 var mongoose = require('mongoose');
-
+var path = require('path');
 var app = express();
 
 // Connect to mongo database names knowitall
@@ -10,6 +10,12 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
  console.log('Mongodb connection open');
+});
+
+app.use('/docs', express.static(__dirname + '/../docs'));
+
+app.get('/docs', function (req, res) {
+  res.sendFile(path.resolve(__dirname + '/../docs/tableofcontents.html'));
 });
 
 // Configure our server with all the middleware and routing
