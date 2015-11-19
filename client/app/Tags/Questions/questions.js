@@ -10,7 +10,7 @@ angular.module('tags.questions', ['knowitall.services.tags', 'knowitall.services
       url: 'tags/:tag',
       views: {
         'questions@': {
-          templateUrl: 'app/tags/Questions/questions.html',
+          templateUrl: 'app/Tags/Questions/questions.html',
           controller: 'QuestionsController as questionsController'
         }
       }
