@@ -10,7 +10,7 @@ module.exports = function(grunt) {
     },
     docco: {
       debug: {
-        src: ['tableofcontents.js','server/server.js', 'server/**/*.js', 'client/app/**/*.js'],
+        src: ['Tableofcontents.js','server/server.js', 'server/**/*.js', 'client/app/**/*.js'],
         options: {
           output: 'docs/'
         }
